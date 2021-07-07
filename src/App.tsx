@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import {flickrApi, PhotoType} from './dal/axios';
+import {Header} from "./components/header/Header";
+import {Container} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+    container: {
+        margin: '1em 0',
+        padding: '1em 0'
+    }
+})
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const classes = useStyles()
+
+    const [cphotos, setPhotos] = useState<Array<PhotoType>>()
+    useEffect(() => {
+        flickrApi.testRequest()
+            .then(res => setPhotos(res.photos.photo))
+    }, [])
+
+
+    return (<>
+        <Header/>
+        <Container className={classes.container}>
+            <div>
+                {cphotos && cphotos[0].title}
+                {cphotos && <img
+                    src={`https://live.staticflickr.com/${cphotos[0].server}/${cphotos[0].id}_${cphotos[0].secret}_m.jpg`}/>}
+
+            </div>
+        </Container>
+    </>)
+        ;
 }
 
 export default App;
