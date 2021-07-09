@@ -1,4 +1,5 @@
 import axios from "axios";
+import {API_KEY} from "./variable";
 
 
 export const flickrApi ={
@@ -7,12 +8,13 @@ export const flickrApi ={
             {
                 params: {
                     name: "vakriv91",
-                    api_key: "ad8358d5b731d6b1e27b6f28fc6682df",
+                    api_key: API_KEY,
                     format: "json",
                     nojsoncallback: "1",
                     text: searchData,
                     media: "photos",
                     per_page: "20",
+                    safe_search: "1"
                 }
             }).then(res => res.data)
     },

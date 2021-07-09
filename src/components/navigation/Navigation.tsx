@@ -2,10 +2,22 @@ import {Divider, Link, MenuItem, MenuList} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import BookmarksIcon from "@material-ui/icons/Bookmarks";
 import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
 
-export const Navigation = (props: any) => {
-    return (<>
-        <MenuList className={props.nav}>
+const useStyles = makeStyles({
+    nav: {
+        position: 'relative',
+        top: '5em',
+    }
+})
+
+
+export const Navigation = () => {
+
+    const classes = useStyles();
+
+    return (
+        <MenuList className={classes.nav}>
             <MenuItem button>
                 <SearchIcon/>
             </MenuItem>
@@ -16,5 +28,5 @@ export const Navigation = (props: any) => {
                 </BookmarksIcon>
             </MenuItem>
         </MenuList>
-    </>)
+    )
 }

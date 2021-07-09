@@ -46,6 +46,5 @@ export const PhotoContainer = (props: PropsType) => {
                 </Button>
             </CardActions>
         </Card>
-        {/*<img src={`https://live.staticflickr.com/${props.data.server}/${props.data.id}_${props.data.secret}_m.jpg`} alt={"ds"}/>*/}
     </Grid>)
 }
