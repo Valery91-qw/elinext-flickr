@@ -2,35 +2,35 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {flickrApi, PhotoType} from './dal/axios';
 import {Header} from "./components/header/Header";
-import {PhotoContainer} from "./components/photoContainer/PhotoContainer";
-import {Container, Grid} from "@material-ui/core";
+import {Container} from "@material-ui/core";
 import {Navigation} from "./components/navigation/Navigation";
 import {Routes} from "./routes/Routes";
+import {Footer} from "./components/footer/Footer";
 
 
 function App() {
+
 
     const [photos, setPhotos] = useState<Array<PhotoType>>()
     const [message, setMessage] = useState('');
 
     useEffect(() => {
+        debugger
         flickrApi.searchPhoto(message)
             .then(res => setPhotos(res.photos.photo))
     }, [message])
 
 
-    return (
-        <div style={{display: 'flex'}}>
+    return (<>
         <Header/>
-        <Navigation />
-        <Container>
-            <Routes setMessage={setMessage}/>
-            <Grid container spacing={4}>
-                {photos && photos.map((el, i) => <PhotoContainer key={i} data={el}/>)}
-            </Grid>
-        </Container>
-    </div>
-    );
+        <div style={{display: 'flex'}}>
+            <Navigation/>
+            <Container>
+                <Routes setMessage={setMessage} photos={photos}/>
+            </Container>
+        </div>
+        <Footer />
+   </> );
 }
 
 export default App;

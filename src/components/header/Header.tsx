@@ -32,7 +32,7 @@ export const Header = () => {
     };
 
     return (
-        <AppBar className={classes.bar}>
+        <AppBar component='header' className={classes.bar}>
             <span className={classes.title}>Image Finder</span>
             <IconButton className={classes.button} onClick={handleOpen}>
                 <AccountCircleIcon />

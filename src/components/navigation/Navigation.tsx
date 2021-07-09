@@ -6,8 +6,7 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     nav: {
-        position: 'relative',
-        top: '5em',
+        marginTop: '5em'
     }
 })
 
