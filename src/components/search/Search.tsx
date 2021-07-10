@@ -3,12 +3,17 @@ import {Grid} from "@material-ui/core";
 import React from "react";
 import { PhotoType } from "../../dal/axios";
 import {SearchPhoto} from "./searchPhoto/SearchPhoto";
+import {useSelector} from "react-redux";
+import {RootStateType} from "../../bll/store";
 
-export const Search = (props: any) => {
+export const Search = () => {
+
+    const photos = useSelector<RootStateType, Array<PhotoType> | null>(state => state.search.photos)
+
     return (<>
-        <SearchPhoto setMessage={props.setMessage}/>
+        <SearchPhoto />
         <Grid container spacing={4}>
-            {props.photos && props.photos.map((el: PhotoType, i: React.Key | null | undefined) => <PhotoContainer key={i} data={el}/>)}
+            {photos && photos.map((el, i) => <PhotoContainer key={i} data={el}/>)}
         </Grid>
     </>)
 }

@@ -4,7 +4,7 @@ import {API_KEY} from "./variable";
 
 export const flickrApi ={
     searchPhoto(searchData: string | null) {
-        return axios.get<RequestPhotosType>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
+        return axios.get<ResponsePhotosType>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
             {
                 params: {
                     name: "vakriv91",
@@ -34,7 +34,7 @@ export type PhotoType = {
     url: string
 }
 
-export type RequestPhotosType = {
+export type ResponsePhotosType = {
     photos: {
         page: number
         pages: number

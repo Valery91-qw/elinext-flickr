@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import {Icon, InputBase, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import {useDispatch} from "react-redux";
+import {setSearchValue} from "../../../bll/search-reducer";
 
 
 
@@ -22,15 +24,19 @@ const useStyles = makeStyles({
 
 export const SearchPhoto = (props: any) => {
 
+    const dispatch = useDispatch();
+
     const [searchData, setSearchData] = useState('');
     const classes = useStyles();
 
     useEffect(() => {
-        const timerOutId = setTimeout(() => props.setMessage(searchData), 500)
+        const timerOutId = setTimeout(() => {
+            dispatch(setSearchValue(searchData))
+        }, 500)
         return () => {
             clearTimeout(timerOutId)
         }
-    }, [props, searchData])
+    }, [dispatch, searchData])
 
     return (
         <Paper className={classes.root}>
