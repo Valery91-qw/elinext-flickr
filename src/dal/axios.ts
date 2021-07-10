@@ -3,7 +3,7 @@ import {API_KEY} from "./variable";
 
 
 export const flickrApi ={
-    searchPhoto(searchData: string | null) {
+    searchPhoto(searchData: string | undefined, currentPage: number) {
         return axios.get<ResponsePhotosType>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
             {
                 params: {
@@ -14,9 +14,10 @@ export const flickrApi ={
                     text: searchData,
                     media: "photos",
                     per_page: "20",
+                    page: currentPage,
                     safe_search: "1"
                 }
-            }).then(res => res.data)
+            }).then(res => res.data )
     },
 }
 

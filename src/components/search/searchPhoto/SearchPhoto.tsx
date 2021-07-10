@@ -12,7 +12,7 @@ const useStyles = makeStyles({
         padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        margin: '5em 1em 1em'
+        margin: '0 1em 1em'
     },
     input: {
         width: '100%',
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     }
 })
 
-export const SearchPhoto = (props: any) => {
+export const SearchPhoto = () => {
 
     const dispatch = useDispatch();
 

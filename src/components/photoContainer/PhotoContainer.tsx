@@ -1,6 +1,7 @@
 import {PhotoType} from "../../dal/axios";
 import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import React from "react";
 
 const useStyles = makeStyles({
     card: {

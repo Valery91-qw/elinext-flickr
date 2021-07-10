@@ -2,11 +2,13 @@ import {ThunkAction} from "redux-thunk";
 import {RootStateType} from "./store";
 import {flickrApi, PhotoType} from "../dal/axios";
 
-const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE'
-const SET_PHOTOS = 'SET_PHOTOS'
+const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
+const SET_PHOTOS = 'SET_PHOTOS';
+const SET_PAGINATION_OPTION = 'SET_PAGINATION_OPTION'
 
 export const initialState: SearchStateType = {
-    searchValue: null,
+    searchValue: undefined,
+    pagination: null,
     photos: []
 }
 
@@ -20,6 +22,8 @@ export const searchReducer = (searchState = initialState, action: ActionType): S
             return {...searchState,
                 photos: [...action.photos]
             }
+        case "SET_PAGINATION_OPTION":
+            return {...searchState, pagination: {...searchState.pagination, ...action.pagination}}
         default:
             return searchState
     }
@@ -28,28 +32,35 @@ export const searchReducer = (searchState = initialState, action: ActionType): S
 
 export const setSearchValue = (searchValue: string) => ({type: SET_SEARCH_VALUE, searchValue} as const)
 export const setPhotos = (photos: Array<PhotoType>) => ({type: SET_PHOTOS, photos} as const)
+export const setPaginationOption = (pagination :{page: number, pages: number}) => ({type: SET_PAGINATION_OPTION, pagination} as const)
 
-export const getPhotos = (searchString: string | null):ThunkType => {
-   return async (dispatch, getState :() => RootStateType) => {
-       try {
-           const data = await flickrApi.searchPhoto(searchString)
-           dispatch(setPhotos(data.photos.photo))
-       } catch (e) {
-           console.log(e)
-       }
-   }
+export const getPhotos = (
+    searchString: string | undefined,
+    currentPage: number = 1
+): ThunkType => {
+    return async (dispatch, getState: () => RootStateType) => {
+        try {
+            const data = await flickrApi.searchPhoto(searchString, currentPage)
+            dispatch(setPhotos(data.photos.photo))
+            dispatch(setPaginationOption({page: data.photos.page, pages: data.photos.pages}))
+        } catch (e) {
+            console.log(e)
+        }
+    }
 }
 
 
 
 export type SearchStateType = {
-    searchValue: string | null
+    searchValue: string | undefined
+    pagination: { page: number, pages: number } | null
     photos: Array<PhotoType>
 }
 
 type SetSearchValueType = ReturnType<typeof setSearchValue>
 type SetPhotosType = ReturnType<typeof setPhotos>
+type SetPaginationOptionTYpe = ReturnType<typeof setPaginationOption>
 
-export type ActionType = SetSearchValueType | SetPhotosType
+export type ActionType = SetSearchValueType | SetPhotosType | SetPaginationOptionTYpe
 
 type ThunkType = ThunkAction<void, RootStateType, unknown, ActionType>

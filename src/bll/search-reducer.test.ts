@@ -1,12 +1,17 @@
-import {searchReducer, SearchStateType, setPhotos, setSearchValue} from "./search-reducer";
+import {searchReducer, SearchStateType, setPaginationOption, setPhotos, setSearchValue} from "./search-reducer";
 import {PhotoType} from "../dal/axios";
 
+let startState: SearchStateType
+
+beforeEach(() => {
+    startState = {
+        searchValue: undefined,
+        pagination: null,
+        photos: [],
+    }
+})
 
 test('search value should be added in state', () => {
-    const startState: SearchStateType = {
-        searchValue: null,
-        photos: [],
-    };
 
     const searchValue = 'Cats';
 
@@ -17,10 +22,6 @@ test('search value should be added in state', () => {
     expect(endState.searchValue).toBe(searchValue);
 });
 test('Array photos type should be added', () => {
-    const startState: SearchStateType = {
-        searchValue: null,
-        photos: []
-    };
 
     const arrayPhotos: Array<PhotoType> = [
         {
@@ -56,4 +57,17 @@ test('Array photos type should be added', () => {
     expect(startState.photos.length).toBe(0)
     expect(endState.photos[0].id).toBe('1')
     expect(endState.photos[1].id).toBe('2')
+});
+test('the value of the fields must be set', () => {
+
+    const paginationOption = {
+        page: 1,
+        pages: 1
+    };
+    const action = setPaginationOption(paginationOption)
+
+    const endState = searchReducer(startState, action)
+
+    expect(startState.pagination).toBeNull()
+    expect(endState.pagination?.page).toBe(1)
 })
