@@ -3,15 +3,15 @@ import {API_KEY} from "./variable";
 
 
 export const flickrApi ={
-    searchPhoto(searchData: string | undefined, currentPage: number) {
-        return axios.get<ResponsePhotosType>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
+    searchPhoto(searchValue: string | undefined, currentPage: number) {
+        return axios.get<ResponseImagesType>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
             {
                 params: {
                     name: "vakriv91",
                     api_key: API_KEY,
                     format: "json",
                     nojsoncallback: "1",
-                    text: searchData,
+                    text: searchValue,
                     media: "photos",
                     per_page: "20",
                     page: currentPage,
@@ -21,8 +21,7 @@ export const flickrApi ={
     },
 }
 
-
-export type PhotoType = {
+export type ImageType = {
     farm: number
     id: string
     isfamily: number
@@ -35,12 +34,12 @@ export type PhotoType = {
     url: string
 }
 
-export type ResponsePhotosType = {
+export type ResponseImagesType = {
     photos: {
         page: number
         pages: number
         perpage: number
-        photo: Array<PhotoType>
+        photo: Array<ImageType>
         total: number
     }
     stat: string

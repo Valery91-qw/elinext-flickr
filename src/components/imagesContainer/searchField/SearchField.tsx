@@ -22,10 +22,10 @@ const useStyles = makeStyles({
 
 export const SearchField = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
-    const [searchData, setSearchData] = useState('');
-    const classes = useStyles();
+    const [searchData, setSearchData] = useState('')
+    const classes = useStyles()
 
     useEffect(() => {
         const timerOutId = setTimeout(() => {

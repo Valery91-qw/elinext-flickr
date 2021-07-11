@@ -1,34 +1,41 @@
-import {PhotoType} from "../../dal/axios";
+import {ImageType} from "../../dal/axios";
 
-const ADD_PHOTO = 'ADD_PHOTO'
-
+const ADD_IMAGE = 'ADD_IMAGE'
+const REMOVE_IMAGE = 'REMOVE_IMAGE'
 
 const initialState: BookmarksStateType = {
-    bookmarksPhotos: [],
+    bookmarksImages: [],
 }
 
 export const bookmarksReducer = (bookmarksState = initialState, action: ActionType): BookmarksStateType => {
     switch (action.type) {
-        case ADD_PHOTO:
-            if(bookmarksState.bookmarksPhotos.find(el => el.id === action.photo.id)) {
-                return {...bookmarksState, bookmarksPhotos: [...bookmarksState.bookmarksPhotos]}
+        case ADD_IMAGE:
+            if(bookmarksState.bookmarksImages.find(el => el.id === action.photo.id)) {
+                return {...bookmarksState, bookmarksImages: [...bookmarksState.bookmarksImages]}
             } else {
                 return {
                     ...bookmarksState,
-                    bookmarksPhotos: [...bookmarksState.bookmarksPhotos, action.photo]
+                    bookmarksImages: [...bookmarksState.bookmarksImages, action.photo]
                 }
             }
+        case REMOVE_IMAGE:
+           return {
+               ...bookmarksState,
+               bookmarksImages: bookmarksState.bookmarksImages.filter(el => el.id !== action.bookmarkId)
+           }
         default: return bookmarksState
     }
 }
 
-export const addImageToBookmark = (photo: PhotoType) => ({type: ADD_PHOTO,photo} as const)
+export const addImageToBookmark = (photo: ImageType) => ({type: ADD_IMAGE,photo} as const)
+export const removeImageToBookmark = (bookmarkId: string) => ({type: REMOVE_IMAGE, bookmarkId} as const)
 
-type AddPhotoToBookmarkType = ReturnType<typeof addImageToBookmark>
+type AddImageToBookmarkType = ReturnType<typeof addImageToBookmark>
+type RemoveImageToBookmarkType = ReturnType<typeof removeImageToBookmark>
 
-type ActionType = AddPhotoToBookmarkType
+type ActionType = AddImageToBookmarkType | RemoveImageToBookmarkType
 
 
 export type BookmarksStateType = {
-    bookmarksPhotos: Array<PhotoType>
+    bookmarksImages: Array<ImageType>
 }

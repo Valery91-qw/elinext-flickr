@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import {Header} from "./components/common/header/Header";
-import {Container} from "@material-ui/core";
 import {Navigation} from "./components/common/navigation/Navigation";
 import {Routes} from "./routes/Routes";
 import {Footer} from "./components/common/footer/Footer";
@@ -9,16 +8,16 @@ import {RootStateType} from "./bll/store";
 import {getPhotos} from "./bll/search-reducer";
 
 
-function App() {
+const App = () => {
 
     const searchValue = useSelector<RootStateType, string | undefined>(state => state.search.searchValue)
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        if(searchValue === undefined || searchValue === '') {
+        if (searchValue === undefined || searchValue === '') {
             return
         }
-            dispatch(getPhotos(searchValue))
+        dispatch(getPhotos(searchValue))
     }, [dispatch, searchValue])
 
 
@@ -26,12 +25,10 @@ function App() {
         <Header/>
         <div style={{display: 'flex'}}>
             <Navigation/>
-            <Container>
-                <Routes />
-            </Container>
+            <Routes/>
         </div>
-        <Footer />
-   </> );
+        <Footer/>
+    </>)
 }
 
 export default App;

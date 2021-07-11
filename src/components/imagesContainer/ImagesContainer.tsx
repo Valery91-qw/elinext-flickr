@@ -1,41 +1,50 @@
-import {Container, Grid} from "@material-ui/core";
+import {Container, Grid, Typography} from "@material-ui/core";
 import React from "react";
-import {PhotoType} from "../../dal/axios";
+import {ImageType} from "../../dal/axios";
 import {makeStyles} from "@material-ui/core/styles";
 import {PaginationContainer} from "./pagination/PaginationContainer";
-import {SearchField } from "../search/searchField/SearchField";
+import {SearchField } from "./searchField/SearchField";
 import {useLocation } from 'react-router-dom'
-import {PhotoContainer} from "../search/photoContainer/PhotoContainer";
+import {ImageContainer} from "./imageContainer/ImageContainer";
 
 
 const useStyles = makeStyles({
     container: {
         marginTop: '5em'
+    },
+    text: {
+        fontWeight: 'bold',
+        color: '#A69500',
     }
 })
 
 type PropsType = {
-    photos: Array<PhotoType> | null
+    images: Array<ImageType> | null
 }
 
-export const ImagesContainer = ({photos}: PropsType) => {
-
+export const ImagesContainer = ({images}: PropsType) => {
 
     const location = useLocation();
     const classes = useStyles();
 
     return (
         <Container className={classes.container}>
-            {location.pathname === '/search' && <SearchField/>}
             {
-                photos?.length !== undefined &&
-                photos.length > 19 &&
-                location.pathname === '/search' &&
-                <PaginationContainer />
+                location.pathname === '/search' && <SearchField/>
             }
-            <Grid container spacing={4}>
-                {photos && photos.map((el, i) => <PhotoContainer key={i} image={el}/>)}
-            </Grid>
+            {
+                images?.length !== undefined &&
+                images.length > 19 &&
+                location.pathname === '/search' && <PaginationContainer />
+            }
+            {
+                location.pathname === '/bookmarks' || images?.length !== 0
+                    ? <Grid container spacing={4}>
+                        {images && images.map((el, i) => <ImageContainer key={i} image={el}/>)}
+                      </Grid>
+                    : <Typography className={classes.text}>No images here.Would you try to search for anything else ?</Typography>
+            }
+
         </Container>
     )
 }

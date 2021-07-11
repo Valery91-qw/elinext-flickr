@@ -1,6 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {RootStateType} from "./store";
-import {flickrApi, PhotoType} from "../dal/axios";
+import {flickrApi, ImageType} from "../dal/axios";
 
 const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
 const SET_PHOTOS = 'SET_PHOTOS';
@@ -9,7 +9,7 @@ const SET_PAGINATION_OPTION = 'SET_PAGINATION_OPTION'
 export const initialState: SearchStateType = {
     searchValue: undefined,
     pagination: null,
-    photos: []
+    images: []
 }
 
 export const searchReducer = (searchState = initialState, action: ActionType): SearchStateType => {
@@ -20,9 +20,9 @@ export const searchReducer = (searchState = initialState, action: ActionType): S
             }
         case SET_PHOTOS:
             return {...searchState,
-                photos: [...action.photos]
+                images: [...action.photos]
             }
-        case "SET_PAGINATION_OPTION":
+        case SET_PAGINATION_OPTION:
             return {...searchState, pagination: {...searchState.pagination, ...action.pagination}}
         default:
             return searchState
@@ -31,7 +31,7 @@ export const searchReducer = (searchState = initialState, action: ActionType): S
 
 
 export const setSearchValue = (searchValue: string) => ({type: SET_SEARCH_VALUE, searchValue} as const)
-export const setPhotos = (photos: Array<PhotoType>) => ({type: SET_PHOTOS, photos} as const)
+export const setPhotos = (photos: Array<ImageType>) => ({type: SET_PHOTOS, photos} as const)
 export const setPaginationOption = (pagination :{page: number, pages: number}) => ({type: SET_PAGINATION_OPTION, pagination} as const)
 
 export const getPhotos = (
@@ -55,7 +55,7 @@ export const getPhotos = (
 export type SearchStateType = {
     searchValue: string | undefined
     pagination: { page: number, pages: number } | null
-    photos: Array<PhotoType>
+    images: Array<ImageType>
 }
 
 type SetSearchValueType = ReturnType<typeof setSearchValue>

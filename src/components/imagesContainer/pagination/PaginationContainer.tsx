@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 
 export const PaginationContainer = () => {
 
-    const classes = useStyles();
+    const classes = useStyles()
 
     const searchValue = useSelector<RootStateType, string | undefined>(state => state.search.searchValue)
     const pagination = useSelector<RootStateType, {pages: number, page: number} | null >(state => state.search.pagination)

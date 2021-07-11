@@ -7,8 +7,33 @@ import {bookmarksReducer} from "./bookmarks/bookmarks-reducer";
 const rootReducer = combineReducers({
     search: searchReducer,
     bookmarks: bookmarksReducer
-});
+})
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+function saveToLocalStorage(state: any) {
+    try {
+        const serialisedState = JSON.stringify(state);
+        localStorage.setItem("bookmarkState", serialisedState);
+    } catch (e) {
+        console.warn(e);
+    }
+}
+function loadFromLocalStorage() {
+    try {
+        const serialisedState = localStorage.getItem("bookmarkState");
+        if (serialisedState === null) return undefined;
+        return JSON.parse(serialisedState);
+    } catch (e) {
+        console.warn(e);
+        return undefined;
+    }
+}
+
+export const store = createStore(rootReducer, loadFromLocalStorage() , applyMiddleware(thunk))
+
+store.subscribe(() => {
+    saveToLocalStorage({
+        bookmarks: store.getState().bookmarks
+    })
+})
 
 export type RootStateType = ReturnType<typeof rootReducer>

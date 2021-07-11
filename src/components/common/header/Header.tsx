@@ -18,7 +18,7 @@ const useStyles = makeStyles({
         fontSize: '1.5em',
         color: '#A69500',
     }
-});
+})
 
 export const Header = () => {
 
