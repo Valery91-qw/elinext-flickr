@@ -1,7 +1,9 @@
-import {PhotoType} from "../../dal/axios";
+import {PhotoType} from "../../../dal/axios";
 import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import React from "react";
+import {useDispatch} from "react-redux";
+import {addPhotoToBookmark} from "../../../bll/bookmarks/bookmarks-reducer";
 
 const useStyles = makeStyles({
     card: {
@@ -31,6 +33,12 @@ export const PhotoContainer = (props: PropsType) => {
 
     const classes = useStyles();
 
+    const dispatch = useDispatch();
+
+    const addPhoto = () => {
+        dispatch(addPhotoToBookmark(props.data))
+    }
+
     return (<Grid item xs={12} sm={6} md={3}>
         <Card>
             <CardMedia className={classes.cardMedia}
@@ -42,8 +50,8 @@ export const PhotoContainer = (props: PropsType) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button className={classes.button} size='small'>
-                In bookmark
+                <Button onClick={addPhoto} className={classes.button} size='small'>
+                    <Typography>In bookmark</Typography>
                 </Button>
             </CardActions>
         </Card>

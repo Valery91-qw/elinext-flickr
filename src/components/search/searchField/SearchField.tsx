@@ -5,8 +5,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../../bll/search-reducer";
 
-
-
 const useStyles = makeStyles({
     root: {
         padding: '2px 4px',
@@ -22,7 +20,7 @@ const useStyles = makeStyles({
     }
 })
 
-export const SearchPhoto = () => {
+export const SearchField = () => {
 
     const dispatch = useDispatch();
 

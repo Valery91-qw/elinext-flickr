@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 })
 
 
-export const Paginator = () => {
+export const PaginationContainer = () => {
 
     const classes = useStyles();
 
