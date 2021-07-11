@@ -38,7 +38,8 @@ export const getPhotos = (
     searchString: string | undefined,
     currentPage: number = 1
 ): ThunkType => {
-    return async (dispatch, getState: () => RootStateType) => {
+    return async (dispatch,
+                  getState: () => RootStateType) => {
         try {
             const data = await flickrApi.searchPhoto(searchString, currentPage)
             dispatch(setPhotos(data.photos.photo))
@@ -59,8 +60,8 @@ export type SearchStateType = {
 
 type SetSearchValueType = ReturnType<typeof setSearchValue>
 type SetPhotosType = ReturnType<typeof setPhotos>
-type SetPaginationOptionTYpe = ReturnType<typeof setPaginationOption>
+type SetPaginationOptionType = ReturnType<typeof setPaginationOption>
 
-export type ActionType = SetSearchValueType | SetPhotosType | SetPaginationOptionTYpe
+export type ActionType = SetSearchValueType | SetPhotosType | SetPaginationOptionType
 
 type ThunkType = ThunkAction<void, RootStateType, unknown, ActionType>

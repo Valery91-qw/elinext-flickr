@@ -1,9 +1,12 @@
 import {PhotoType} from "../../../dal/axios";
-import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
+import {Card, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import React from "react";
-import {useDispatch} from "react-redux";
-import {addPhotoToBookmark} from "../../../bll/bookmarks/bookmarks-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {addImageToBookmark} from "../../../bll/bookmarks/bookmarks-reducer";
+import {RootStateType} from "../../../bll/store";
+import {BookmarkButton} from "./bookmarkButton/BookmarkButton";
+
 
 const useStyles = makeStyles({
     card: {
@@ -14,46 +17,48 @@ const useStyles = makeStyles({
     cardMedia: {
         paddingTop: '56.25%',
     },
-    button: {
-        backgroundColor: '#E7FF73',
-        color: '#89A600',
-        padding: '.5em',
-        "&:hover": {
-            backgroundColor: '#89A600',
-            color: '#E7FF73'
-        }
-    }
+
 })
 
 type PropsType = {
-    data: PhotoType
+    image: PhotoType
 }
 
-export const PhotoContainer = (props: PropsType) => {
+export const PhotoContainer = ({image}: PropsType) => {
+
+    const inBookmark = useSelector<RootStateType, boolean>(state => {
+        if (state.bookmarks.bookmarksPhotos.find(el => el.id === image.id)) {
+            return true
+        } else {
+            return false
+        }})
 
     const classes = useStyles();
-
     const dispatch = useDispatch();
 
-    const addPhoto = () => {
-        dispatch(addPhotoToBookmark(props.data))
+    const addToBookmark = () => {
+        dispatch(addImageToBookmark(image))
+    };
+    const removeToBookmark = () => {
+
     }
 
     return (<Grid item xs={12} sm={6} md={3}>
         <Card>
             <CardMedia className={classes.cardMedia}
-                       title={props.data.title}
-                       image={`https://live.staticflickr.com/${props.data.server}/${props.data.id}_${props.data.secret}_m.jpg`}/>
+                       title={image.title}
+                       image={`https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}_m.jpg`}/>
             <CardContent>
                 <Typography>
-                    {props.data.title}
+                    {image.title}
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button onClick={addPhoto} className={classes.button} size='small'>
-                    <Typography>In bookmark</Typography>
-                </Button>
-            </CardActions>
+            <BookmarkButton
+                inBookmark={inBookmark}
+                addToBookmark={addToBookmark}
+                removeToBookmark={removeToBookmark}/>
         </Card>
     </Grid>)
 }
+
+

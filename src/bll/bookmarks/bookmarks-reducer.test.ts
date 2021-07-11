@@ -1,11 +1,11 @@
-import {addPhotoToBookmark, bookmarksReducer, BookmarksStateType} from "./bookmarks-reducer";
+import {addImageToBookmark, bookmarksReducer, BookmarksStateType} from "./bookmarks-reducer";
 import {PhotoType} from "../../dal/axios";
 
 
 test('the photo should be added to state', () => {
 
     const startState: BookmarksStateType = {
-        bookmarksPhotos: []
+        bookmarksPhotos: [],
     }
     const photo: PhotoType = {
         title: 'photo1',
@@ -17,10 +17,10 @@ test('the photo should be added to state', () => {
         isfamily: 1,
         isfriend: 1,
         ispublic: 1,
-        owner: 'yes'
+        owner: 'yes',
     };
 
-    const action = addPhotoToBookmark(photo)
+    const action = addImageToBookmark(photo)
 
     const endState = bookmarksReducer(startState, action)
 
