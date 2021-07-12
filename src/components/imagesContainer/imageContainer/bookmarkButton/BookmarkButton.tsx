@@ -22,7 +22,7 @@ type PropsType = {
 
 export const BookmarkButton = ({ inBookmark, addToBookmark, removeToBookmark} : PropsType) => {
 
-    const classes = useStyles();
+    const classes = useStyles()
 
     return (<>
         {inBookmark

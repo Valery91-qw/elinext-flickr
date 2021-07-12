@@ -12,8 +12,8 @@ export const Routes = () => {
 
     return (
         <Switch>
-            <Route exact path="/search" render={() => <ImagesContainer images={images} />}/>
-            <Route path="/bookmarks" render={() => <ImagesContainer images={bookmarks}/>}/>
+            <Route exact path='/search' render={() => <ImagesContainer images={images} />}/>
+            <Route path='/bookmarks' render={() => <ImagesContainer images={bookmarks}/>}/>
             <Redirect exact from='/' to='/search' />
         </Switch>
     )

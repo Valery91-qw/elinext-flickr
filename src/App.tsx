@@ -5,7 +5,6 @@ import {Routes} from "./routes/Routes";
 import {Footer} from "./components/common/footer/Footer";
 
 
-
 const App = () => {
 
     return (<>

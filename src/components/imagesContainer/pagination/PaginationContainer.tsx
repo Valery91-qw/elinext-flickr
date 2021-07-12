@@ -21,7 +21,7 @@ export const PaginationContainer = () => {
 
     const searchValue = useSelector<RootStateType, string | undefined>(state => state.search.searchValue)
     const pagination = useSelector<RootStateType, {pages: number, page: number} | null >(state => state.search.pagination)
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     const paginationOption = (event: unknown, page: number) => {
 

@@ -7,7 +7,6 @@ import {SearchField } from "./searchField/SearchField";
 import {useLocation } from 'react-router-dom'
 import {ImageContainer} from "./imageContainer/ImageContainer";
 
-
 const useStyles = makeStyles({
     container: {
         marginTop: '5em'

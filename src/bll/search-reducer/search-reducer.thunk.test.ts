@@ -1,7 +1,8 @@
-import {flickrApi, ResponseImagesType} from "../../dal/axios";
-import {getPhotos} from "./search-reducer";
 
-jest.mock("../dal/axios")
+import {getPhotos} from "./search-reducer";
+import {flickrApi, ResponseImagesType} from "../../dal/axios";
+
+jest.mock("../../dal/axios")
 
 const flickrAPIMock = flickrApi as jest.Mocked<typeof flickrApi>
 

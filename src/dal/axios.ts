@@ -7,15 +7,15 @@ export const flickrApi ={
         return axios.get<ResponseImagesType>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
             {
                 params: {
-                    name: "vakriv91",
+                    name: 'vakriv91',
                     api_key: API_KEY,
-                    format: "json",
-                    nojsoncallback: "1",
+                    format: 'json',
+                    nojsoncallback: '1',
                     text: searchValue,
-                    media: "photos",
-                    per_page: "20",
+                    media: 'photos',
+                    per_page: '20',
                     page: currentPage,
-                    safe_search: "1"
+                    safe_search: '1'
                 }
             }).then(res => res.data )
     },

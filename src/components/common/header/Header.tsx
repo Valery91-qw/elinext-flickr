@@ -1,6 +1,6 @@
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import {AppBar, IconButton} from "@material-ui/core";
-import React, {useState} from "react";
+import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -24,18 +24,11 @@ export const Header = () => {
 
     const classes = useStyles()
 
-    const [open, setOpen] = useState(false);
-
-    const handleOpen = () => {
-        setOpen(!open);
-        console.log(open)
-    };
-
     return (
         <AppBar component='header' className={classes.bar}>
             <span className={classes.title}>Image Finder</span>
-            <IconButton className={classes.button} onClick={handleOpen}>
-                <AccountCircleIcon />
+            <IconButton className={classes.button}>
+                <AccountCircleIcon/>
             </IconButton>
         </AppBar>
     )
