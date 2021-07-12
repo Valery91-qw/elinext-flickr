@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/elinext-flickr/static/css/main.2ae47eeb.chunk.css",
+    "main.js": "/elinext-flickr/static/js/main.8fd90ded.chunk.js",
+    "main.js.map": "/elinext-flickr/static/js/main.8fd90ded.chunk.js.map",
+    "runtime-main.js": "/elinext-flickr/static/js/runtime-main.32a18a6d.js",
+    "runtime-main.js.map": "/elinext-flickr/static/js/runtime-main.32a18a6d.js.map",
+    "static/js/2.41094cfe.chunk.js": "/elinext-flickr/static/js/2.41094cfe.chunk.js",
+    "static/js/2.41094cfe.chunk.js.map": "/elinext-flickr/static/js/2.41094cfe.chunk.js.map",
+    "static/js/3.a032f9ee.chunk.js": "/elinext-flickr/static/js/3.a032f9ee.chunk.js",
+    "static/js/3.a032f9ee.chunk.js.map": "/elinext-flickr/static/js/3.a032f9ee.chunk.js.map",
+    "index.html": "/elinext-flickr/index.html",
+    "static/css/main.2ae47eeb.chunk.css.map": "/elinext-flickr/static/css/main.2ae47eeb.chunk.css.map",
+    "static/js/2.41094cfe.chunk.js.LICENSE.txt": "/elinext-flickr/static/js/2.41094cfe.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32a18a6d.js",
+    "static/js/2.41094cfe.chunk.js",
+    "static/css/main.2ae47eeb.chunk.css",
+    "static/js/main.8fd90ded.chunk.js"
+  ]
+}
