@@ -1,6 +1,6 @@
 import {ThunkAction} from "redux-thunk";
-import {RootStateType} from "./store";
-import {flickrApi, ImageType} from "../dal/axios";
+import {RootStateType} from "../store";
+import {flickrApi, ImageType} from "../../dal/axios";
 
 const SET_SEARCH_VALUE = 'SET_SEARCH_VALUE';
 const SET_PHOTOS = 'SET_PHOTOS';
@@ -30,7 +30,7 @@ export const searchReducer = (searchState = initialState, action: ActionType): S
 }
 
 
-export const setSearchValue = (searchValue: string) => ({type: SET_SEARCH_VALUE, searchValue} as const)
+export const setSearchValue = (searchValue: string | undefined) => ({type: SET_SEARCH_VALUE, searchValue} as const)
 export const setPhotos = (photos: Array<ImageType>) => ({type: SET_PHOTOS, photos} as const)
 export const setPaginationOption = (pagination :{page: number, pages: number}) => ({type: SET_PAGINATION_OPTION, pagination} as const)
 
@@ -39,13 +39,14 @@ export const getPhotos = (
     currentPage: number = 1
 ): ThunkType => {
     return async (dispatch,
-                  getState: () => RootStateType) => {
+                  getState: () => RootStateType ) => {
+        dispatch(setSearchValue(searchString))
         try {
             const data = await flickrApi.searchPhoto(searchString, currentPage)
             dispatch(setPhotos(data.photos.photo))
             dispatch(setPaginationOption({page: data.photos.page, pages: data.photos.pages}))
         } catch (e) {
-            console.log(e)
+
         }
     }
 }

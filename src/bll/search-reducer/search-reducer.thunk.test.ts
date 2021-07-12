@@ -1,4 +1,4 @@
-import {flickrApi, ResponseImagesType} from "../dal/axios";
+import {flickrApi, ResponseImagesType} from "../../dal/axios";
 import {getPhotos} from "./search-reducer";
 
 jest.mock("../dal/axios")
@@ -44,5 +44,5 @@ test('get photos thunk', async () => {
     const thunk = getPhotos('one')
     await thunk(dispatchMock, getStateMock, {})
 
-    expect(dispatchMock).toBeCalledTimes(2)
+    expect(dispatchMock).toBeCalledTimes(3)
 })

@@ -3,7 +3,7 @@ import {Icon, InputBase, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import {useDispatch} from "react-redux";
-import {setSearchValue} from "../../../bll/search-reducer";
+import {getPhotos} from "../../../bll/search-reducer/search-reducer";
 
 const useStyles = makeStyles({
     root: {
@@ -24,17 +24,18 @@ export const SearchField = () => {
 
     const dispatch = useDispatch()
 
-    const [searchData, setSearchData] = useState('')
+    const [searchValue, setSearchData] = useState('')
     const classes = useStyles()
 
     useEffect(() => {
+        if(searchValue === '') return
         const timerOutId = setTimeout(() => {
-            dispatch(setSearchValue(searchData))
+            dispatch(getPhotos(searchValue))
         }, 500)
         return () => {
             clearTimeout(timerOutId)
         }
-    }, [dispatch, searchData])
+    }, [dispatch, searchValue])
 
     return (
         <Paper className={classes.root}>
@@ -42,7 +43,7 @@ export const SearchField = () => {
                 <SearchIcon />
             </Icon>
             <InputBase className={classes.input}
-                       value={searchData}
+                       value={searchValue}
                        placeholder="Search"
                        onChange={e => setSearchData(e.currentTarget.value)}/>
         </Paper>

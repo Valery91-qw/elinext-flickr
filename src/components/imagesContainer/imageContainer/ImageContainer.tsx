@@ -3,10 +3,11 @@ import {Card, CardContent, CardMedia, Grid, Typography} from "@material-ui/core"
 import {makeStyles} from "@material-ui/core/styles";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {addImageToBookmark, removeImageToBookmark} from "../../../bll/bookmarks/bookmarks-reducer";
+import {addImageToBookmark, removeImageToBookmark} from "../../../bll/bookmarks-reducer/bookmarks-reducer";
 import {RootStateType} from "../../../bll/store";
 import {BookmarkButton} from "./bookmarkButton/BookmarkButton";
 import { memo } from "react";
+import {TagField} from "./tagField/TagField";
 
 
 const useStyles = makeStyles({
@@ -58,6 +59,7 @@ export const ImageContainer = memo(({image}: PropsType) => {
                 inBookmark={inBookmark}
                 addToBookmark={addToBookmark}
                 removeToBookmark={removeToBookmark}/>
+            <TagField />
         </Card>
     </Grid>)
 }, )

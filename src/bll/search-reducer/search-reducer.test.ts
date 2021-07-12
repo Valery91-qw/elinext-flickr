@@ -1,5 +1,5 @@
 import {searchReducer, SearchStateType, setPaginationOption, setPhotos, setSearchValue} from "./search-reducer";
-import {ImageType} from "../dal/axios";
+import {ImageType} from "../../dal/axios";
 
 let startState: SearchStateType
 
@@ -21,7 +21,7 @@ test('search value should be added in state', () => {
 
     expect(endState.searchValue).toBe(searchValue)
 })
-test('Array images type should be added', () => {
+test('Array images should be added', () => {
 
     const arrayPhotos: Array<ImageType> = [
         {

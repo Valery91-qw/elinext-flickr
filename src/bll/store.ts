@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import {searchReducer} from "./search-reducer";
+import {searchReducer} from "./search-reducer/search-reducer";
 import thunk from "redux-thunk";
-import {bookmarksReducer} from "./bookmarks/bookmarks-reducer";
+import {bookmarksReducer} from "./bookmarks-reducer/bookmarks-reducer";
 
 
 const rootReducer = combineReducers({
