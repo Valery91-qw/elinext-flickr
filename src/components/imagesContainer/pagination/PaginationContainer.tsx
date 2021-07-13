@@ -24,7 +24,6 @@ export const PaginationContainer = () => {
     const dispatch = useDispatch()
 
     const paginationOption = (event: unknown, page: number) => {
-
         dispatch(getPhotos(searchValue,page))
     }
 

@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     }
 })
 
-type PropsType = {
+export type PropsType = {
     setTags: (tags: Array<string>) => void
 }
 

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     }
 })
 
-type PropsType = {
+export type PropsType = {
     inBookmark: boolean
     addToBookmark: () => void
     removeToBookmark: () => void
