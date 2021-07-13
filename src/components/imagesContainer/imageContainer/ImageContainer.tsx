@@ -26,11 +26,11 @@ const useStyles = makeStyles({
 
 })
 
-type PropsType = {
+export type ImageContainerPropsType = {
     image: BookmarkImageType
 }
 
-export const ImageContainer = memo(({image}: PropsType) => {
+export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
 
     const inBookmark = useSelector<RootStateType, boolean>(state => {
         if (state.bookmarks.bookmarksImages.find(el => el.id === image.id)) {

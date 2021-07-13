@@ -11,11 +11,11 @@ const useStyles = makeStyles({
     }
 })
 
-type PropsType = {
+type TagsAreaPropsType = {
     currentId: string
 }
 
-export const TagsArea = ({currentId}: PropsType) => {
+export const TagsArea = ({currentId}: TagsAreaPropsType) => {
 
     const classes = useStyles()
 

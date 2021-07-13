@@ -6,9 +6,9 @@ import {ReduxContextDecorator} from "../../../stories/decorators/preview";
 export default {
     component: PaginationContainer,
     title: 'Pagination',
-    decorators: [ReduxContextDecorator]
+    decorators: [ReduxContextDecorator],
 } as Meta
 
-export const PaginationExample = () => {
+export const PaginationContainerExample = () => {
     return <PaginationContainer />
 }

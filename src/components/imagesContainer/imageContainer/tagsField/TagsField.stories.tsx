@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {PropsType, TagsField} from "./TagsField";
+import {TagsField, TagsFieldPropsType} from "./TagsField";
 import {ReduxContextDecorator} from "../../../../stories/decorators/preview";
 import {action} from "@storybook/addon-actions";
 
@@ -26,7 +26,7 @@ export default {
     }
 } as Meta
 
-const Template: Story<PropsType> = (args) => <TagsField {...args}/>
+const Template: Story<TagsFieldPropsType> = (args) => <TagsField {...args}/>
 
 export const TagsFieldExample = Template.bind({})
 TagsFieldExample.args = {

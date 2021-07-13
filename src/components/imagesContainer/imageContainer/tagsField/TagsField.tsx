@@ -8,11 +8,11 @@ const useStyles = makeStyles({
     }
 })
 
-export type PropsType = {
+export type TagsFieldPropsType = {
     setTags: (tags: Array<string>) => void
 }
 
-export const TagsField = ({setTags}: PropsType) => {
+export const TagsField = ({setTags}: TagsFieldPropsType) => {
 
     const classes = useStyles()
 

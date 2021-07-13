@@ -64,7 +64,11 @@ const rootReducer = combineReducers({
     bookmarks: bookmarksReducer
 })
 
-const storybookStore = createStore(rootReducer, initialSate, applyMiddleware(thunk))
+const storybookStore = createStore<RootStateType, any, any, any>(
+    rootReducer ,
+    initialSate,
+    applyMiddleware(thunk)
+)
 export const ReduxContextDecorator = (story: any) => (
     <Provider store={storybookStore} >
         {story()}

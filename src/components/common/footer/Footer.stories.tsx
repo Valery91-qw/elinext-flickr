@@ -7,6 +7,6 @@ export default {
     title: 'Footer',
 } as Meta
 
-export const FooterApp = () => {
+export const FooterComponent = () => {
     return <Footer />
 }

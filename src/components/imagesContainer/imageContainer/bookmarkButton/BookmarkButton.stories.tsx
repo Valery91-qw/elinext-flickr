@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {BookmarkButton, PropsType} from "./BookmarkButton"
+import {BookmarkButton, BookmarkButtonPropsType} from "./BookmarkButton"
 import {action} from "@storybook/addon-actions";
 
 export default {
@@ -8,7 +8,7 @@ export default {
     title: 'Button',
 } as Meta
 
-const Template: Story<PropsType> = (args) => <BookmarkButton {...args}/>
+const Template: Story<BookmarkButtonPropsType> = (args) => <BookmarkButton {...args}/>
 
 export const BookmarkMutableButtonExample = Template.bind({})
 BookmarkMutableButtonExample.args = {

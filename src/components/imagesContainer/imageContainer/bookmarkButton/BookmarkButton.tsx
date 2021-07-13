@@ -14,13 +14,13 @@ const useStyles = makeStyles({
     }
 })
 
-export type PropsType = {
+export type BookmarkButtonPropsType = {
     inBookmark: boolean
     addToBookmark: () => void
     removeToBookmark: () => void
 }
 
-export const BookmarkButton = ({ inBookmark, addToBookmark, removeToBookmark} : PropsType) => {
+export const BookmarkButton = ({ inBookmark, addToBookmark, removeToBookmark} : BookmarkButtonPropsType) => {
 
     const classes = useStyles()
 
