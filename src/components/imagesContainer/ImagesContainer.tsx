@@ -1,4 +1,4 @@
-import {Container, Grid, Typography} from "@material-ui/core";
+import {Container, Grid, LinearProgress, Typography} from "@material-ui/core";
 import React from "react";
 import {ImageType} from "../../dal/axios";
 import {makeStyles} from "@material-ui/core/styles";
@@ -26,7 +26,7 @@ export const ImagesContainer = ({images}: ImagesContainerPropsType) => {
     const location = useLocation();
     const classes = useStyles();
 
-    return (
+    return ( <>
         <Container className={classes.container}>
             {
                 location.pathname === '/search' && <SearchField/>
@@ -45,5 +45,5 @@ export const ImagesContainer = ({images}: ImagesContainerPropsType) => {
             }
 
         </Container>
-    )
+    </>)
 }

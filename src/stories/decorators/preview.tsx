@@ -56,6 +56,9 @@ const initialSate: RootStateType = {
                 tags: ['in', 'bookmark']
             },
         ]
+    },
+    process: {
+        isLoading: undefined
     }
 }
 

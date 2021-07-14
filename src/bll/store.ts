@@ -2,11 +2,13 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import {searchReducer} from "./search-reducer/search-reducer";
 import thunk from "redux-thunk";
 import {bookmarksReducer} from "./bookmarks-reducer/bookmarks-reducer";
+import {processingReducer} from "./procesing-reducer/processing-reducer";
 
 
 const rootReducer = combineReducers({
     search: searchReducer,
-    bookmarks: bookmarksReducer
+    bookmarks: bookmarksReducer,
+    process: processingReducer,
 })
 
 function saveToLocalStorage(state: any) {
