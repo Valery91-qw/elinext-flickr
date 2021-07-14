@@ -1,4 +1,4 @@
-import {Container, Grid, LinearProgress, Typography} from "@material-ui/core";
+import {Container, Grid, Typography} from "@material-ui/core";
 import React from "react";
 import {ImageType} from "../../dal/axios";
 import {makeStyles} from "@material-ui/core/styles";

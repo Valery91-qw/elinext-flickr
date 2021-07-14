@@ -45,5 +45,5 @@ test('get photos thunk', async () => {
     const thunk = getPhotos('one')
     await thunk(dispatchMock, getStateMock, {})
 
-    expect(dispatchMock).toBeCalledTimes(3)
+    expect(dispatchMock).toBeCalledTimes(5)
 })

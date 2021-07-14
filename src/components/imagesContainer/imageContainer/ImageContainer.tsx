@@ -14,11 +14,6 @@ import {TagsArea} from "./tagsArea/TagsArea";
 
 
 const useStyles = makeStyles({
-    card: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
     cardMedia: {
         paddingTop: '56.25%',
     },

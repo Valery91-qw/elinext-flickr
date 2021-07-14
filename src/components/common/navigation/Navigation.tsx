@@ -13,6 +13,14 @@ const useStyles = makeStyles({
     },
     navLink: {
         color: '#E7FF73',
+        '&:hover': {
+            color: '#fff'
+        }
+    },
+    menuItem: {
+        '&:hover': {
+            backgroundColor: '#E7FF73'
+        }
     }
 })
 
@@ -24,13 +32,13 @@ export const Navigation = () => {
     return (
         <MenuList className={classes.nav}>
             <Link className={classes.navLink} component={RouterLink} to="/">
-                <MenuItem button>
+                <MenuItem className={classes.menuItem} button>
                     <CloudIcon />
                 </MenuItem>
             </Link>
             <Divider/>
             <Link className={classes.navLink} component={RouterLink} to="/bookmarks">
-                <MenuItem button>
+                <MenuItem button className={classes.menuItem}>
                     <BookmarksIcon />
                 </MenuItem>
             </Link>

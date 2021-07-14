@@ -10,13 +10,15 @@ const useStyles = makeStyles({
         padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        margin: '0 1em 1em'
+        margin: '0 1em 1em',
+        backgroundColor: 'rgba(250,255,115,0.5)'
     },
     input: {
         width: '100%',
     },
     inputIcon: {
-        margin: '0.3em'
+        margin: '0.3em',
+        color: '#FFE500'
     }
 })
 
