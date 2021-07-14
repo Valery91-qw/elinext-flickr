@@ -14,6 +14,10 @@ export default {
     },
 } as Meta
 
-export const NavigationApp = () => {
-    return <Navigation />
+export const NavigationExample = () => {
+    return (
+        <div style={{width: '150px'}}>
+            <Navigation/>
+        </div>
+    )
 }

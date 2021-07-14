@@ -17,11 +17,11 @@ const useStyles = makeStyles({
     }
 })
 
-type PropsType = {
+export type ImagesContainerPropsType = {
     images: Array<ImageType> | null
 }
 
-export const ImagesContainer = ({images}: PropsType) => {
+export const ImagesContainer = ({images}: ImagesContainerPropsType) => {
 
     const location = useLocation();
     const classes = useStyles();

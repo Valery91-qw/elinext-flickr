@@ -9,7 +9,6 @@ import {
 } from "../../../bll/bookmarks-reducer/bookmarks-reducer";
 import {RootStateType} from "../../../bll/store";
 import {BookmarkButton} from "./bookmarkButton/BookmarkButton";
-import {memo} from "react";
 import {TagsField} from "./tagsField/TagsField";
 import {TagsArea} from "./tagsArea/TagsArea";
 
@@ -30,7 +29,7 @@ export type ImageContainerPropsType = {
     image: BookmarkImageType
 }
 
-export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
+export const ImageContainer =({image}: ImageContainerPropsType) => {
 
     const inBookmark = useSelector<RootStateType, boolean>(state => {
         if (state.bookmarks.bookmarksImages.find(el => el.id === image.id)) {
@@ -47,6 +46,7 @@ export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
 
     const addToBookmark = () => {
         dispatch(addImageToBookmark(image))
+
         dispatch(addBookmarkTags(image.id, tags))
     }
 
@@ -77,6 +77,6 @@ export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
             </Card>
         </Grid>
     )
-},)
+}
 
 
