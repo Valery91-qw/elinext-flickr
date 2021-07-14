@@ -4,7 +4,7 @@ const apiKey = process.env.REACT_APP_APIKey || API_KEY
 
 export const flickrApi ={
     searchPhoto(searchValue: string | undefined, currentPage: number) {
-        return axios.get<ResponseImagesType>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
+        return axios.get<any>('https://www.flickr.com/services/rest/?method=flickr.photos.search',
             {
                 params: {
                     name: 'vakriv91',
@@ -17,7 +17,7 @@ export const flickrApi ={
                     page: currentPage,
                     safe_search: '1'
                 }
-            }).then(res => res.data )
+            }).then((res) => res.data)
     },
 }
 
