@@ -1,7 +1,7 @@
 import React from 'react';
 import {Meta} from '@storybook/react';
-import {PaginationContainer} from "./PaginationContainer";
-import {ReduxContextDecorator} from "../../../stories/decorators/preview";
+import {PaginationContainer} from "../../../../components/imagesContainer/pagination/PaginationContainer";
+import {ReduxContextDecorator} from "../../../decorators/preview";
 
 export default {
     component: PaginationContainer,

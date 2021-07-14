@@ -1,7 +1,7 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {ImageContainer, ImageContainerPropsType} from "./ImageContainer";
-import {ReduxContextDecorator} from "../../../stories/decorators/preview";
+import {ImageContainer, ImageContainerPropsType} from "../../../../components/imagesContainer/imageContainer/ImageContainer";
+import {ReduxContextDecorator} from "../../../decorators/preview";
 
 export default {
     component: ImageContainer,
