@@ -13,20 +13,22 @@ const rootReducer = combineReducers({
 
 function saveToLocalStorage(state: any) {
     try {
-        const serialisedState = JSON.stringify(state);
-        localStorage.setItem("bookmarkState", serialisedState);
+        const serialisedState = JSON.stringify(state)
+        localStorage.setItem("bookmarkState", serialisedState)
     } catch (e) {
-        console.warn(e);
+        console.warn(e)
     }
 }
 function loadFromLocalStorage() {
     try {
-        const serialisedState = localStorage.getItem("bookmarkState");
-        if (serialisedState === null) return undefined;
-        return JSON.parse(serialisedState);
+        const serialisedState = localStorage.getItem("bookmarkState")
+        if (serialisedState === null) return
+
+        return JSON.parse(serialisedState)
     } catch (e) {
-        console.warn(e);
-        return undefined;
+        console.warn(e)
+
+        return
     }
 }
 

@@ -30,7 +30,6 @@ const App = () => {
 
     const classes = useStyles()
 
-
     return (<>
         <Header/>
         {isLoad && <LinearProgress classes={classes}/> }
