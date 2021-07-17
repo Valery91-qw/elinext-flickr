@@ -23,7 +23,6 @@ const useStyles = makeStyles({
     }
 })
 
-
 const App = () => {
 
     const isLoad = useSelector<RootStateType, boolean | undefined>(state => state.process.isLoading)
