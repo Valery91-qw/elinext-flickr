@@ -1,40 +1,40 @@
-import {Container, InputAdornment, TextField} from "@material-ui/core";
-import EmailIcon from '@material-ui/icons/Email';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import {Button, Container, Typography} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import CancelIcon from '@material-ui/icons/Cancel';
+import {Form} from "./form/Form";
 
-export const Login = () => {
+const useStyles = makeStyles({
+    container: {
+        width: '25%',
+        backgroundColor: '#fff',
+    },
+    title: {
+        padding: '0.5em 0 1em',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+})
+
+type LoginPropsType = {
+    handleClose: () => void
+}
+
+export const Login = ({handleClose}: LoginPropsType) => {
+
+    const classes = useStyles()
+
     return (
-        <Container>
-            <p>
-                header form and some info
-            </p>
-            <form noValidate>
-                <TextField required
-                           InputProps={{
-                               startAdornment: (
-                                   <InputAdornment position="start">
-                                       <EmailIcon />
-                                   </InputAdornment>
-                               ),
-                           }}
-                           size="small"
-                           id="email"
-                           name="email"
-                           label="Email address"/>
-                <TextField required
-                           InputProps={{
-                               startAdornment: (
-                                    <InputAdornment position="start">
-                                        <VisibilityOffIcon />
-                                    </InputAdornment>
-                               )
-                           }}
-                           size="small"
-                           id="password"
-                           name="password"
-                           type="password"
-                           label="Password"/>
-            </form>
+        <Container className={classes.container}>
+            <Container className={classes.title}>
+            <Typography>
+                Google Bookmark
+            </Typography>
+                <Button onClick={handleClose}>
+                    <CancelIcon />
+                </Button>
+            </Container>
+            <Form />
         </Container>
     )
 }

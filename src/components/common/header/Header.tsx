@@ -19,6 +19,11 @@ const useStyles = makeStyles({
         fontSize: '1.5em',
         color: '#A69500',
     },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 })
 
 export const Header = () => {
@@ -40,10 +45,9 @@ export const Header = () => {
             <IconButton className={classes.button} onClick={handleOpen}>
                 <AccountCircleIcon/>
             </IconButton>
-            <Modal aria-labelledby='Google bookmark'
-                open={open}
-                   onClose={handleClose}>
-                <Login />
+            <Modal className={classes.modal} aria-labelledby='Google bookmark'
+                open={open}>
+                <Login handleClose={handleClose} />
             </Modal>
         </AppBar>
     )
