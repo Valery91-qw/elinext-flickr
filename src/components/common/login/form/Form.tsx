@@ -1,8 +1,8 @@
 import {Button, InputAdornment, TextField} from "@material-ui/core";
-import EmailIcon from "@material-ui/icons/Email";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import {FormEvent, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import {EmailField} from "./EmailField/EmailField";
 
 const useStyles = makeStyles({
     formWrapper: {
@@ -23,29 +23,15 @@ export const Form = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [isError, setIsError] = useState(false)
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(`Email: ${email}, Password: ${password}`)
     }
 
     return(
         <form noValidate className={classes.formWrapper} onSubmit={handleSubmit}>
-            <TextField required
-                       onChange={e => setEmail(e.target.value)}
-                       InputProps={{
-                           startAdornment: (
-                               <InputAdornment position="start">
-                                   <EmailIcon />
-                               </InputAdornment>
-                           ),
-                       }}
-                       value={email}
-                       className={classes.field}
-                       size="small"
-                       id="email"
-                       name="email"
-                       label="Email address"/>
+            <EmailField classes={classes} email={email} setEmail={setEmail}/>
             <TextField required
                        onChange={e => setPassword(e.target.value)}
                        InputProps={{
@@ -55,9 +41,10 @@ export const Form = () => {
                                </InputAdornment>
                            )
                        }}
-                       size="small"
+                       error={isError}
                        className={classes.field}
                        value={password}
+                       size="small"
                        id="password"
                        name="password"
                        type="password"
