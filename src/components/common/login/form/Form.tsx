@@ -1,8 +1,8 @@
-import {Button, InputAdornment, TextField} from "@material-ui/core";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import {Button} from "@material-ui/core";
 import {FormEvent, useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import {EmailField} from "./EmailField/EmailField";
+import {PasswordField} from "./PasswordField/PasswordField";
 
 const useStyles = makeStyles({
     formWrapper: {
@@ -23,7 +23,6 @@ export const Form = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isError, setIsError] = useState(false)
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -31,24 +30,12 @@ export const Form = () => {
 
     return(
         <form noValidate className={classes.formWrapper} onSubmit={handleSubmit}>
-            <EmailField classes={classes} email={email} setEmail={setEmail}/>
-            <TextField required
-                       onChange={e => setPassword(e.target.value)}
-                       InputProps={{
-                           startAdornment: (
-                               <InputAdornment position="start">
-                                   <VisibilityOffIcon />
-                               </InputAdornment>
-                           )
-                       }}
-                       error={isError}
-                       className={classes.field}
-                       value={password}
-                       size="small"
-                       id="password"
-                       name="password"
-                       type="password"
-                       label="Password"/>
+            <EmailField classes={classes}
+                        email={email}
+                        setEmail={setEmail}/>
+            <PasswordField classes={classes}
+                           password={password}
+                           setPassword={setPassword} />
             <Button className={classes.button} type="submit">Sign In</Button>
         </form>
     )
