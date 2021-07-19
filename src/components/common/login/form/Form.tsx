@@ -23,6 +23,7 @@ export const Form = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [commonError, setCommonError] = useState({email: false, password: false})
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -31,12 +32,17 @@ export const Form = () => {
     return(
         <form noValidate className={classes.formWrapper} onSubmit={handleSubmit}>
             <EmailField classes={classes}
+                        setCommonError={setCommonError}
+                        commonError={commonError}
                         email={email}
                         setEmail={setEmail}/>
             <PasswordField classes={classes}
+                           setCommonError={setCommonError}
+                           commonError={commonError}
                            password={password}
                            setPassword={setPassword} />
-            <Button className={classes.button} type="submit">Sign In</Button>
+            <Button disabled={commonError.email || commonError.password}
+                    className={classes.button} type="submit">Sign In</Button>
         </form>
     )
 }

@@ -1,6 +1,6 @@
 import {InputAdornment, TextField} from "@material-ui/core";
 import EmailIcon from "@material-ui/icons/Email";
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 
 type LoginFieldPropsType = {
     classes: {
@@ -8,9 +8,11 @@ type LoginFieldPropsType = {
     }
     email: string
     setEmail: (email: string) => void
+    setCommonError: ({email, password}: {email: boolean, password: boolean}) => void
+    commonError: {email: boolean, password: boolean}
 }
 
-export const EmailField = ({classes, email, setEmail}: LoginFieldPropsType) => {
+export const EmailField = ({classes, email, setEmail, setCommonError, commonError}: LoginFieldPropsType) => {
 
     const [isError, setIsError] = useState(false)
 
@@ -21,8 +23,13 @@ export const EmailField = ({classes, email, setEmail}: LoginFieldPropsType) => {
             setIsError(false)
         }
         setEmail(event.target.value)
-    }
 
+    }
+    useEffect(() => {
+        setCommonError({email: isError, password: commonError.password})
+    }, [commonError.password, isError, setCommonError])
+    
+    
     return (
         <TextField required
                    onChange={handleEmail}

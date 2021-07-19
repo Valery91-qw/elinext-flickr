@@ -1,4 +1,4 @@
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {InputAdornment, TextField} from "@material-ui/core";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
@@ -8,9 +8,11 @@ type PasswordFieldPropsType = {
     }
     password: string
     setPassword: (password: string) => void
+    setCommonError: ({email, password}: {email: boolean, password: boolean}) => void
+    commonError: {email: boolean, password: boolean}
 }
 
-export const PasswordField = ({classes, password, setPassword}: PasswordFieldPropsType) => {
+export const PasswordField = ({classes, password, setPassword, setCommonError, commonError}: PasswordFieldPropsType) => {
 
     const [isError, setIsError] = useState(false)
 
@@ -21,7 +23,12 @@ export const PasswordField = ({classes, password, setPassword}: PasswordFieldPro
             setIsError(false)
         }
         setPassword(event.target.value)
+        
     }
+    
+    useEffect(() => {
+        setCommonError({email: commonError.email, password: isError})
+    }, [commonError.email, isError, setCommonError])
 
     return (
         <TextField required
