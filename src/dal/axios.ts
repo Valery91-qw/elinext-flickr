@@ -1,5 +1,7 @@
 import axios from "axios";
-import {API_KEY} from "./variable";
+import {API_KEY, REDDIT_API_KEY} from "./variable";
+import snoowrap from 'snoowrap'
+
 const apiKey = process.env.REACT_APP_APIKey || API_KEY
 
 export const flickrApi ={
@@ -21,6 +23,14 @@ export const flickrApi ={
     },
 }
 
+export const redditApi = () => {
+    return new snoowrap({
+        userAgent: window.navigator.userAgent,
+        clientId: REDDIT_API_KEY.KEY,
+        clientSecret: REDDIT_API_KEY.SECRET,
+        refreshToken: 'fsdfsdfsdfsfsdf'
+    })
+}
 
 export type ImageType = {
     farm: number

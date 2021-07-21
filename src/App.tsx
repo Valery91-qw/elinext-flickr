@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Header} from "./components/common/header/Header";
 import {Navigation} from "./components/common/navigation/Navigation";
 import {Routes} from "./routes/Routes";
@@ -7,6 +7,7 @@ import {LinearProgress} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {useSelector} from "react-redux";
 import {RootStateType} from "./bll/store";
+import {redditApi} from "./dal/axios";
 
 const useStyles = makeStyles({
     root: {
