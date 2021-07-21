@@ -21,6 +21,7 @@ export const flickrApi ={
     },
 }
 
+
 export type ImageType = {
     farm: number
     id: string

@@ -28,7 +28,7 @@ export const Login = ({handleClose}: LoginPropsType) => {
         <Container className={classes.container}>
             <Container className={classes.title}>
             <Typography>
-                Google Bookmark
+                Workpiece
             </Typography>
                 <Button onClick={handleClose}>
                     <CancelIcon />

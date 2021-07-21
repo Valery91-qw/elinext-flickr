@@ -23,7 +23,7 @@ export const Form = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [commonError, setCommonError] = useState({email: false, password: false})
+    const [commonError, setCommonError] = useState({email: true, password: true})
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
