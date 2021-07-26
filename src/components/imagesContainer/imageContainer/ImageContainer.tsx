@@ -1,6 +1,6 @@
 import {Card, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {
     addBookmarkTags,
@@ -24,7 +24,7 @@ export type ImageContainerPropsType = {
     image: BookmarkImageType
 }
 
-export const ImageContainer =({image}: ImageContainerPropsType) => {
+export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
 
     const inBookmark = useSelector<RootStateType, boolean>(state => {
         return !!state.bookmarks.bookmarksImages.find(el => el.id === image.id);
@@ -68,6 +68,6 @@ export const ImageContainer =({image}: ImageContainerPropsType) => {
             </Card>
         </Grid>
     )
-}
+})
 
 

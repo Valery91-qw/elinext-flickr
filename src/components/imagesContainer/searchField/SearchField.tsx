@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {memo, useEffect, useState} from "react";
 import {Icon, InputBase, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     }
 })
 
-export const SearchField = () => {
+export const SearchField = memo(() => {
 
     const dispatch = useDispatch()
 
@@ -50,4 +50,4 @@ export const SearchField = () => {
                        onChange={e => setSearchData(e.currentTarget.value)}/>
         </Paper>
     )
-}
+} )

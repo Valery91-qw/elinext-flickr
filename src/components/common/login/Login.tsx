@@ -2,6 +2,7 @@ import {Button, Container, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import CancelIcon from '@material-ui/icons/Cancel';
 import {Form} from "./form/Form";
+import {memo} from "react";
 
 const useStyles = makeStyles({
     container: {
@@ -20,7 +21,7 @@ type LoginPropsType = {
     handleClose: () => void
 }
 
-export const Login = ({handleClose}: LoginPropsType) => {
+export const Login = memo(({handleClose}: LoginPropsType) => {
 
     const classes = useStyles()
 
@@ -37,4 +38,4 @@ export const Login = ({handleClose}: LoginPropsType) => {
             <Form />
         </Container>
     )
-}
+} )
