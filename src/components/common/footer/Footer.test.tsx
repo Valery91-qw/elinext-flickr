@@ -8,7 +8,6 @@ describe('Footer',  () => {
     })
     test('snapshot test Footer',  () => {
         const {asFragment} = render(<Footer />);
-        // @ts-ignore
         expect(asFragment(<Footer />)).toMatchSnapshot()
     })
 })

@@ -31,7 +31,7 @@ export const Navigation = () => {
 
     return (
         <MenuList className={classes.nav}>
-            <Link className={classes.navLink} component={RouterLink} to="/">
+            <Link data-testid="nav-link" className={classes.navLink} component={RouterLink} to="/">
                 <MenuItem className={classes.menuItem} button>
                     <CloudIcon />
                 </MenuItem>

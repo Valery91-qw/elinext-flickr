@@ -4,7 +4,6 @@ import {Header} from "./Header";
 describe('Header', () => {
     test('header snapshot',  () => {
         const { asFragment } = render(<Header />)
-        // @ts-ignore
         expect(asFragment(<Header />)).toMatchSnapshot()
     })
     test('render Header component', () => {
