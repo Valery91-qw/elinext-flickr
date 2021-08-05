@@ -4,7 +4,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import {EmailField} from "./EmailField/EmailField";
 import {PasswordField} from "./PasswordField/PasswordField";
 
-const useStyles = makeStyles({
+export const useStyles = makeStyles({
     formWrapper: {
         display: 'flex',
         flexDirection: 'column',

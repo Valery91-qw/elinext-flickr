@@ -73,7 +73,6 @@ test('curren image should be deleted in state', () => {
     expect(endState.bookmarksImages.length).toBe(1)
     expect(endState.bookmarksImages[0].id).toBe('2')
 })
-
 test('bookmark tags should be added to the desired image', () => {
 
     const action = addBookmarkTags('1' ,['My', 'first', 'tag'])
@@ -83,6 +82,7 @@ test('bookmark tags should be added to the desired image', () => {
     expect(startState.bookmarksImages[1].tags).toBeUndefined()
     expect(endState.bookmarksImages[0].tags?.length).toBe(3)
     if(endState.bookmarksImages[0].tags) {
+        // eslint-disable-next-line jest/no-conditional-expect
         expect(endState.bookmarksImages[0].tags[0]).toBe('My')
     }
 

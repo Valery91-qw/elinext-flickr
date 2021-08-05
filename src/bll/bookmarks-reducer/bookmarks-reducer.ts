@@ -1,8 +1,8 @@
 import {ImageType} from "../../dal/axios";
 
-const ADD_IMAGE = 'ADD_IMAGE'
-const REMOVE_IMAGE = 'REMOVE_IMAGE'
-const ADD_TAGS = 'ADD_TAGS'
+export const ADD_IMAGE = 'ADD_IMAGE'
+export const REMOVE_IMAGE = 'REMOVE_IMAGE'
+export const ADD_TAGS = 'ADD_TAGS'
 
 const initialState: BookmarksStateType = {
     bookmarksImages: [],
@@ -47,7 +47,7 @@ type AddImageToBookmarkType = ReturnType<typeof addImageToBookmark>
 type RemoveImageToBookmarkType = ReturnType<typeof removeImageToBookmark>
 type AddBookmarkTags = ReturnType<typeof addBookmarkTags>
 
-type ActionType = AddImageToBookmarkType | RemoveImageToBookmarkType | AddBookmarkTags
+export type ActionType = AddImageToBookmarkType | RemoveImageToBookmarkType | AddBookmarkTags
 
 export type BookmarkImageType = ImageType &  {
     tags?: Array<string>
