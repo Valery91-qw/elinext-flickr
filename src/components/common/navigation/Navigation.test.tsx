@@ -15,14 +15,15 @@ describe('Navigation', () => {
         // @ts-ignore
         expect(asFragment(<Navigation />)).toMatchSnapshot()
     })
-    test("in the nav component should be displayed element with test-data attribute", () => {
+    test('', () => {
         const history = createMemoryHistory()
         render(
             <Router history={history}>
                 <Navigation />
             </Router>
-
         )
-       expect(screen.getByTestId("nav-link")).toBeInTheDocument()
+        expect(screen.getByRole('menu')).toBeInTheDocument()
+        expect(screen.getAllByRole('menuitem')[0]).toBeInTheDocument()
+        expect(screen.getAllByRole('menuitem')[1]).toBeInTheDocument()
     })
 })
