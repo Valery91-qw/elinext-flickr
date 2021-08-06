@@ -11,8 +11,8 @@ describe('Login', () => {
 
     test('The login component should display items such as buttons and inputs', () => {
         render(<Login handleClose={jest.fn()} />)
-        expect(screen.getAllByRole('button', {name: 'Sign In'}).length).toBe(2)
-        expect(screen.getAllByRole('button', {name: ''}).length).toBe(2)
+        expect(screen.getByRole('button', {name: 'Sign In'})).toBeInTheDocument()
+        expect(screen.getByRole('button', {name: ''})).toBeInTheDocument()
         expect(screen.getByLabelText(/Password/)).toBeInTheDocument()
         expect(screen.getByLabelText(/Email addres/)).toBeInTheDocument()
     })
