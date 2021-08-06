@@ -1,6 +1,6 @@
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import {AppBar, IconButton, Modal} from "@material-ui/core";
-import React, {useState} from "react";
+import React, {forwardRef, useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import {Login} from "../login/Login";
 
@@ -26,7 +26,8 @@ const useStyles = makeStyles({
     },
 })
 
-export const Header = () => {
+
+export const Header = forwardRef((props = {}, ref) => {
 
     const classes = useStyles()
 
@@ -45,10 +46,10 @@ export const Header = () => {
             <IconButton className={classes.button} onClick={handleOpen}>
                 <AccountCircleIcon/>
             </IconButton>
-            <Modal className={classes.modal} aria-labelledby='Google bookmark'
+            <Modal ref={ref} className={classes.modal} aria-labelledby='Google bookmark'
                 open={open}>
                 <Login handleClose={handleClose} />
             </Modal>
         </AppBar>
     )
-}
+})

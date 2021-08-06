@@ -12,6 +12,7 @@ describe('Navigation', () => {
             </Router>
 
         )
+        // @ts-ignore
         expect(asFragment(<Navigation />)).toMatchSnapshot()
     })
     test("in the nav component should be displayed element with test-data attribute", () => {

@@ -2,7 +2,7 @@ import {Button, Container, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import CancelIcon from '@material-ui/icons/Cancel';
 import {Form} from "./form/Form";
-import {memo} from "react";
+import {forwardRef} from "react";
 
 const useStyles = makeStyles({
     container: {
@@ -21,12 +21,12 @@ type LoginPropsType = {
     handleClose: () => void
 }
 
-export const Login = memo(({handleClose}: LoginPropsType) => {
+export const Login = forwardRef(({handleClose}: LoginPropsType, ref) => {
 
     const classes = useStyles()
 
     return (
-        <Container className={classes.container}>
+        <Container className={classes.container} >
             <Container className={classes.title}>
             <Typography>
                 Workpiece
