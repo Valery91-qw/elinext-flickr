@@ -5,7 +5,7 @@ import {bookmarksReducer} from "./bookmarks-reducer/bookmarks-reducer";
 import {processingReducer} from "./procesing-reducer/processing-reducer";
 import {saveToLocalStorageMiddleware} from "./utils/custom-middleware";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     search: searchReducer,
     bookmarks: bookmarksReducer,
     process: processingReducer,
