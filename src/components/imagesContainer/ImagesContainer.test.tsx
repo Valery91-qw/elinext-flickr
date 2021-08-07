@@ -26,7 +26,6 @@ const image = {
     server: 'first server',
     url: 'my image'
 }
-
 const testData = (function (image) {
     let result = []
         for (let i = 0; i <= 20; i++){
@@ -39,7 +38,7 @@ const testData = (function (image) {
 })(image)
 
 describe('ImagesContainer', () => {
-    test('If in component Image Container the props is equal empty array and path equal /search', () => {
+    test('If in component Images Container the props is equal empty array and path equal /search', () => {
         const history = createMemoryHistory()
         history.push('/search')
         renderWithRedux(
@@ -54,7 +53,7 @@ describe('ImagesContainer', () => {
         expect(screen.getByText(/No images here.Would you try to search for anything else ?/)).toBeInTheDocument()
         expect(searchInput).toBeInTheDocument()
     })
-    test('This test describes the case how an image container should be displayed with test data in a path equal to /search',  () => {
+    test('This test describes the case how an images container should be displayed with test data in a path equal to /search',  () => {
         const history = createMemoryHistory()
         history.push('/search')
         renderWithRedux(
@@ -89,7 +88,7 @@ describe('ImagesContainer', () => {
         expect(screen.getByText(/second images/)).toBeInTheDocument()
         expect(screen.queryByText(/No images here.Would you try to search for anything else ?/)).not.toBeInTheDocument()
     })
-    test('This case should displayed with the pagination component.', () => {
+    test('This case should displayed with the pagination component in a path equal to /search', () => {
         const history = createMemoryHistory()
         history.push('/search')
         renderWithRedux(
@@ -100,5 +99,26 @@ describe('ImagesContainer', () => {
         expect(screen.getByRole('navigation')).toBeInTheDocument()
         expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
         expect(screen.getAllByRole('button').length).toBeGreaterThan(19)
+    })
+    test('The image container must be correctly rendered with a path equal to /bookmarks and props equal to an empty array', () => {
+        const history = createMemoryHistory()
+        history.push('/bookmarks')
+        renderWithRedux(
+            <Router history={history}>
+                <ImagesContainer images={[]} />
+            </Router>
+        )
+        expect(screen.queryByText(/No images here.Would you try to search for anything else ?/)).not.toBeInTheDocument()
+    })
+    test('The images conteiner should not display pagination as it is displayed in the path equal /bookmarks', () => {
+        const history = createMemoryHistory()
+        history.push('/bookmarks')
+        renderWithRedux(
+            <Router history={history}>
+                <ImagesContainer images={testData} />
+            </Router>
+        )
+        expect(screen.queryByRole('paragraph')).not.toBeInTheDocument()
+        expect(screen.getAllByRole('button').length).toBe(testData.length)
     })
 })
