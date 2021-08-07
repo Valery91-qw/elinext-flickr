@@ -6,20 +6,40 @@ import {Provider} from "react-redux";
 import {createMemoryHistory} from "history";
 import {Router} from "react-router-dom";
 
-jest.mock('../../dal/axios')
-
-
 const renderWithRedux = (
     component: any,
-    { initialState, store = createStore(rootReducer, initialState)}: any = {}
+    { initialState, store = createStore(rootReducer, initialState) }: any = {}
 ) => {
     return {
         ...render(<Provider store={store}>{component}</Provider>)
     }
 }
+const image = {
+    id: '1',
+    farm: 1,
+    title: 'first images',
+    isfamily: 1,
+    isfriend: 1,
+    ispublic: 1,
+    owner: '1',
+    secret: 'secret 1',
+    server: 'first server',
+    url: 'my image'
+}
+
+const testData = (function (image) {
+    let result = []
+        for (let i = 0; i <= 20; i++){
+            result.push({
+                ...image,
+                id: `${i}`
+            })
+        }
+    return  result
+})(image)
 
 describe('ImagesContainer', () => {
-    test('If in component ImagesContainer in props is empty array and path = /search', () => {
+    test('If in component Image Container the props is equal empty array and path equal /search', () => {
         const history = createMemoryHistory()
         history.push('/search')
         renderWithRedux(
@@ -33,5 +53,52 @@ describe('ImagesContainer', () => {
         expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
         expect(screen.getByText(/No images here.Would you try to search for anything else ?/)).toBeInTheDocument()
         expect(searchInput).toBeInTheDocument()
+    })
+    test('This test describes the case how an image container should be displayed with test data in a path equal to /search',  () => {
+        const history = createMemoryHistory()
+        history.push('/search')
+        renderWithRedux(
+            <Router history={history}>
+                <ImagesContainer images={[{
+                    id: '1',
+                    farm: 1,
+                    title: 'first images',
+                    isfamily: 1,
+                    isfriend: 1,
+                    ispublic: 1,
+                    owner: '1',
+                    secret: 'secret 1',
+                    server: 'first server',
+                    url: 'my image'
+                }, {
+                        id: '2',
+                        farm: 2,
+                        title: 'second images',
+                        isfamily: 2,
+                        isfriend: 2,
+                        ispublic: 2,
+                        owner: '2',
+                        secret: 'secret 2',
+                        server: 'second server',
+                        url: 'not my image'}]} />
+            </Router>
+        )
+
+        expect(screen.getAllByRole('button').length).toBe(2)
+        expect(screen.getByText(/first images/)).toBeInTheDocument()
+        expect(screen.getByText(/second images/)).toBeInTheDocument()
+        expect(screen.queryByText(/No images here.Would you try to search for anything else ?/)).not.toBeInTheDocument()
+    })
+    test('This case should displayed with the pagination component.', () => {
+        const history = createMemoryHistory()
+        history.push('/search')
+        renderWithRedux(
+            <Router history={history}>
+                <ImagesContainer images={testData} />
+            </Router>
+        )
+        expect(screen.getByRole('navigation')).toBeInTheDocument()
+        expect(screen.getByPlaceholderText('Search')).toBeInTheDocument()
+        expect(screen.getAllByRole('button').length).toBeGreaterThan(19)
     })
 })
