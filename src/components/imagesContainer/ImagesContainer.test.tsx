@@ -110,7 +110,7 @@ describe('ImagesContainer', () => {
         )
         expect(screen.queryByText(/No images here.Would you try to search for anything else ?/)).not.toBeInTheDocument()
     })
-    test('The images conteiner should not display pagination as it is displayed in the path equal /bookmarks', () => {
+    test('The images container should not display pagination as it is displayed in the path equal /bookmarks', () => {
         const history = createMemoryHistory()
         history.push('/bookmarks')
         renderWithRedux(
@@ -118,7 +118,7 @@ describe('ImagesContainer', () => {
                 <ImagesContainer images={testData} />
             </Router>
         )
-        expect(screen.queryByRole('paragraph')).not.toBeInTheDocument()
+        expect(screen.queryByRole('navigation')).not.toBeInTheDocument()
         expect(screen.getAllByRole('button').length).toBe(testData.length)
     })
 })
