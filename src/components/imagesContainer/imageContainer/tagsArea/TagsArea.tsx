@@ -24,7 +24,7 @@ export const TagsArea = ({currentId}: TagsAreaPropsType) => {
         if (im) {
             return im.tags
         } else {
-            return undefined
+            return
         }
     })
 
