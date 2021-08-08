@@ -1,4 +1,4 @@
-import {renderWithRedux} from "../../../../utils/create-store-for-test";
+import {renderWithRedux} from "../../../../../utils/create-store-for-test";
 import {TagsArea} from "./TagsArea";
 import {screen} from "@testing-library/react";
 

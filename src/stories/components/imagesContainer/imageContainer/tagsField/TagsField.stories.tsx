@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {TagsField, TagsFieldPropsType} from "../../../../../components/imagesContainer/imageContainer/tagsField/TagsField";
+import {TagsField, TagsFieldPropsType} from "../../../../../view/components/imagesContainer/imageContainer/tagsField/TagsField";
 import {ReduxContextDecorator} from "../../../../decorators/preview";
 import {action} from "@storybook/addon-actions";
 

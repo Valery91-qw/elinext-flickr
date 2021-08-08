@@ -1,6 +1,6 @@
 import {Container, Grid, Typography} from "@material-ui/core";
 import React from "react";
-import {ImageType} from "../../dal/axios";
+import {ImageType} from "../../../dal/axios";
 import {makeStyles} from "@material-ui/core/styles";
 import {PaginationContainer} from "./pagination/PaginationContainer";
 import {SearchField } from "./searchField/SearchField";

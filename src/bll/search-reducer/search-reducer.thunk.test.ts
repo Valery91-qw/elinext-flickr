@@ -1,6 +1,5 @@
-
-import {getPhotos} from "./search-reducer";
 import {flickrApi, ResponseImagesType} from "../../dal/axios";
+import {getPhotos} from "./search-operations";
 
 jest.mock("../../dal/axios")
 

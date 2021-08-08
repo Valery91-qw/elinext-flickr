@@ -1,5 +1,7 @@
-import {searchReducer, SearchStateType, setPaginationOption, setPhotos, setSearchValue} from "./search-reducer";
+import {searchReducer} from "./search-reducer";
 import {ImageType} from "../../dal/axios";
+import {setPaginationOption, setPhotos, setSearchValue} from "./search-actions";
+import {SearchStateType} from "./search-model";
 
 let startState: SearchStateType
 
@@ -11,7 +13,7 @@ beforeEach(() => {
     }
 })
 
-test('search value should be added in state', () => {
+test('The string "Cats" needs to be added to the search state. The previous state should not change. A new object will return', () => {
 
     const searchValue = 'Cats'
 
@@ -20,8 +22,10 @@ test('search value should be added in state', () => {
     const endState = searchReducer(startState, action)
 
     expect(endState.searchValue).toBe(searchValue)
+    expect(startState.searchValue).not.toBe('Cats')
+    expect(startState).not.toEqual(endState)
 })
-test('Array images should be added', () => {
+test('An array of passed objects must be added to the state. The previous state will not change, a new state object will return', () => {
 
     const arrayPhotos: Array<ImageType> = [
         {
@@ -57,8 +61,9 @@ test('Array images should be added', () => {
     expect(startState.images.length).toBe(0)
     expect(endState.images[0].id).toBe('1')
     expect(endState.images[1].id).toBe('2')
+    expect(startState).not.toEqual(endState)
 });
-test('the values of pagination fields must be set', () => {
+test('A new state object will be created, and the passed object will be the value of the pagination field', () => {
 
     const paginationOption = {
         page: 1,
@@ -70,4 +75,5 @@ test('the values of pagination fields must be set', () => {
 
     expect(startState.pagination).toBeNull()
     expect(endState.pagination?.page).toBe(1)
+    expect(startState).not.toEqual(endState)
 })

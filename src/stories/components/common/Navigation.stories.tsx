@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meta} from '@storybook/react';
-import {Navigation} from "../../../components/common/navigation/Navigation";
+import {Navigation} from "../../../view/components/common/navigation/Navigation";
 import {RouterDecorator} from "../../decorators/preview";
 
 export default {

@@ -1,7 +1,7 @@
 import {Chip, Grid} from "@material-ui/core";
 import React from "react";
 import {useSelector} from "react-redux";
-import {RootStateType} from "../../../../bll/store";
+import {RootStateType} from "../../../../../bll/store";
 import {makeStyles} from "@material-ui/core/styles";
 
 

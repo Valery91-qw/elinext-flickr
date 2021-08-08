@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meta} from '@storybook/react';
-import {Header} from "../../../components/common/header/Header";
+import {Header} from "../../../view/components/common/header/Header";
 
 export default {
     component: Header,

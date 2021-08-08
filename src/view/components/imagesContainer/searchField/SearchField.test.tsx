@@ -2,7 +2,7 @@ import {screen} from "@testing-library/react";
 import {SearchField} from "./SearchField";
 import userEvent from "@testing-library/user-event";
 import React from "react";
-import {renderWithRedux} from "../../../utils/create-store-for-test";
+import {renderWithRedux} from "../../../../utils/create-store-for-test";
 
 
 describe('Search field',  () => {

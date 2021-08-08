@@ -1,7 +1,7 @@
 import { screen} from "@testing-library/react";
 import React from "react";
 import {PaginationContainer} from "./PaginationContainer";
-import {renderWithRedux} from "../../../utils/create-store-for-test";
+import {renderWithRedux} from "../../../../utils/create-store-for-test";
 
 
 describe('Pagination container', () => {

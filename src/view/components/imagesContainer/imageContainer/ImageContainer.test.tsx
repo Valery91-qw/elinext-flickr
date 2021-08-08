@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import {ImageContainer} from "./ImageContainer";
 import userEvent from "@testing-library/user-event";
-import {renderWithRedux} from "../../../utils/create-store-for-test";
+import {renderWithRedux} from "../../../../utils/create-store-for-test";
 
 const image = {
     id: '1',

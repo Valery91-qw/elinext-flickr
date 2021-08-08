@@ -6,8 +6,8 @@ import {
     addBookmarkTags,
     addImageToBookmark, BookmarkImageType,
     removeImageToBookmark
-} from "../../../bll/bookmarks-reducer/bookmarks-reducer";
-import {RootStateType} from "../../../bll/store";
+} from "../../../../bll/bookmarks-reducer/bookmarks-reducer";
+import {RootStateType} from "../../../../bll/store";
 import {BookmarkButton} from "./bookmarkButton/BookmarkButton";
 import {TagsField} from "./tagsField/TagsField";
 import {TagsArea} from "./tagsArea/TagsArea";

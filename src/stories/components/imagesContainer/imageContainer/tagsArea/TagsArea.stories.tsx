@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meta} from '@storybook/react';
-import {TagsArea} from "../../../../../components/imagesContainer/imageContainer/tagsArea/TagsArea";
+import {TagsArea} from "../../../../../view/components/imagesContainer/imageContainer/tagsArea/TagsArea";
 import {ReduxContextDecorator} from "../../../../decorators/preview";
 
 export default {

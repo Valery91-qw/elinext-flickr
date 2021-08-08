@@ -1,12 +1,12 @@
 import React from 'react';
-import {Header} from "./components/common/header/Header";
-import {Navigation} from "./components/common/navigation/Navigation";
-import {Routes} from "./routes/Routes";
-import {Footer} from "./components/common/footer/Footer";
-import {LinearProgress} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
 import {useSelector} from "react-redux";
-import {RootStateType} from "./bll/store";
+import {RootStateType} from "../bll/store";
+import {Header} from "./components/common/header/Header";
+import {makeStyles} from "@material-ui/core/styles";
+import {LinearProgress} from "@material-ui/core";
+import {Routes} from "./routes/Routes";
+import {Navigation} from "./components/common/navigation/Navigation";
+import {Footer} from "./components/common/footer/Footer";
 
 const useStyles = makeStyles({
     root: {

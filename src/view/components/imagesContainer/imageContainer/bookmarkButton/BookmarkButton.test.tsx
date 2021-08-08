@@ -1,6 +1,6 @@
 import { screen} from "@testing-library/react";
 import {BookmarkButton} from "./BookmarkButton";
-import {renderWithRedux} from "../../../../utils/create-store-for-test";
+import {renderWithRedux} from "../../../../../utils/create-store-for-test";
 
 
 describe('BookmarkButton', () => {

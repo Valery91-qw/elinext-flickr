@@ -1,6 +1,6 @@
 import React from 'react';
 import {Meta, Story} from '@storybook/react';
-import {BookmarkButton, BookmarkButtonPropsType} from "../../../../../components/imagesContainer/imageContainer/bookmarkButton/BookmarkButton"
+import {BookmarkButton, BookmarkButtonPropsType} from "../../../../../view/components/imagesContainer/imageContainer/bookmarkButton/BookmarkButton"
 import {action} from "@storybook/addon-actions";
 
 export default {

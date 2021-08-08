@@ -1,8 +1,8 @@
 import {Redirect, Route, Switch } from "react-router-dom"
 import {ImagesContainer} from "../components/imagesContainer/ImagesContainer";
 import {useSelector} from "react-redux";
-import {RootStateType} from "../bll/store";
-import {ImageType} from "../dal/axios";
+import {RootStateType} from "../../bll/store";
+import {ImageType} from "../../dal/axios";
 
 
 export const Routes = () => {

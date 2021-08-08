@@ -1,10 +1,10 @@
 import Pagination from "@material-ui/lab/Pagination"
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getPhotos} from "../../../bll/search-reducer/search-reducer";
-import {RootStateType} from "../../../bll/store";
+import {RootStateType} from "../../../../bll/store";
 import {Container} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
+import {getPhotos} from "../../../../bll/search-reducer/search-operations";
 
 const useStyles = makeStyles({
     container: {

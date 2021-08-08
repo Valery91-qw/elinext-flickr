@@ -2,7 +2,7 @@ import {ImagesContainer} from "./ImagesContainer";
 import {screen} from "@testing-library/react";
 import {createMemoryHistory} from "history";
 import {Router} from "react-router-dom";
-import {renderWithRedux} from "../../utils/create-store-for-test";
+import {renderWithRedux} from "../../../utils/create-store-for-test";
 
 
 

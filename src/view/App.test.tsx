@@ -1,5 +1,5 @@
 import {createStore} from "redux";
-import {rootReducer} from "./bll/store";
+import {rootReducer} from "../bll/store";
 import {render, screen} from "@testing-library/react";
 import {Provider} from "react-redux";
 import App from "./App";
