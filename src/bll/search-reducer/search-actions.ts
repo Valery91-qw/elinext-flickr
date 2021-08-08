@@ -1,6 +1,6 @@
 import {search_constants} from "./search-constants";
 import {ImageType} from "../../dal/axios";
-import {IsLoadType} from "../procesing-reducer/processing-reducer";
+import {IsLoadType} from "../procesing-reducer/processing-actions";
 
 export const setSearchValue = (searchValue: string | undefined) => ({type: search_constants.SET_SEARCH_VALUE, searchValue} as const)
 export const setPhotos = (photos: Array<ImageType>) => ({type: search_constants.SET_PHOTOS, photos} as const)
