@@ -1,5 +1,9 @@
 import {flickrApi, ResponseImagesType} from "../../dal/axios";
 import {getPhotos} from "./search-operations";
+import {setPaginationOption, setPhotos, setSearchValue} from "./search-actions";
+import {isLoad} from "../procesing-reducer/processing-reducer";
+import {screen} from "@testing-library/react";
+import {removeImageToBookmark} from "../bookmarks-reducer/bookmarks-reducer";
 
 jest.mock("../../dal/axios")
 
@@ -41,8 +45,22 @@ test('get photos thunk', async () => {
 
     flickrAPIMock.searchPhoto.mockReturnValue(Promise.resolve(result))
 
+    const expectedActions = [
+        setSearchValue('one'),
+        isLoad(true),
+        setPhotos(result.photos.photo),
+        setPaginationOption({page: result.photos.page, pages: result.photos.pages}),
+        isLoad(false)
+    ];
+
     const thunk = getPhotos('one')
     await thunk(dispatchMock, getStateMock, {})
 
     expect(dispatchMock).toBeCalledTimes(5)
+    expect(dispatchMock.mock.calls[0][0]).toEqual(expectedActions[0])
+    expect(dispatchMock.mock.calls[1][0]).toEqual(expectedActions[1])
+    expect(dispatchMock.mock.calls[1][0]).not.toEqual(expectedActions[0])
+    expect(dispatchMock.mock.calls[2][0]).toEqual(expectedActions[2])
+    expect(dispatchMock.mock.calls[3][0]).toEqual(expectedActions[3])
+    expect(dispatchMock.mock.calls[4][0]).toEqual(expectedActions[4])
 })

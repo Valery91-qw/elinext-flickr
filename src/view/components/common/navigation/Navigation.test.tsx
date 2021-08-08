@@ -15,7 +15,7 @@ describe('Navigation', () => {
         // @ts-ignore
         expect(asFragment(<Navigation />)).toMatchSnapshot()
     })
-    test('', () => {
+    test('The navigation component should render a menu with two items', () => {
         const history = createMemoryHistory()
         render(
             <Router history={history}>
