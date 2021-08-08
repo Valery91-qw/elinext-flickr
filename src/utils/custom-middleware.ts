@@ -1,9 +1,12 @@
 import {Dispatch} from "redux";
-import {ActionType, ADD_IMAGE, ADD_TAGS, REMOVE_IMAGE} from "../bll/bookmarks-reducer/bookmarks-reducer";
+import {bookmarks_constants} from "../bll/bookmarks/bookmarks-constants";
+import {ActionType} from "../bll/bookmarks/bookmarks-actions";
 
 export const saveToLocalStorageMiddleware = (store: any) => (next: Dispatch) => (action: ActionType) => {
     next(action);
-    if (action.type === ADD_TAGS || action.type === ADD_IMAGE || action.type === REMOVE_IMAGE) {
+    if (action.type === bookmarks_constants.ADD_TAGS ||
+        action.type === bookmarks_constants.ADD_IMAGE ||
+        action.type === bookmarks_constants.REMOVE_IMAGE) {
         saveToLocalStorage({
             bookmarks: store.getState().bookmarks
         })

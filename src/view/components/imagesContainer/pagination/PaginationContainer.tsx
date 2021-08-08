@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../../bll/store";
 import {Container} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
-import {getPhotos} from "../../../../bll/search-reducer/search-operations";
+import {getPhotos} from "../../../../bll/search/search-operations";
 
 const useStyles = makeStyles({
     container: {

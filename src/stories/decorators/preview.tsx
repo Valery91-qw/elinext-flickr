@@ -2,8 +2,8 @@ import React from "react";
 import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import {searchReducer} from "../../bll/search-reducer/search-reducer";
-import {bookmarksReducer} from "../../bll/bookmarks-reducer/bookmarks-reducer";
+import {searchReducer} from "../../bll/search/search-reducer";
+import {bookmarksReducer} from "../../bll/bookmarks/bookmarks-reducer";
 import {RootStateType} from "../../bll/store";
 import thunk from "redux-thunk";
 

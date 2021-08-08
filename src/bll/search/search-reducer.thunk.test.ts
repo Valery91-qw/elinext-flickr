@@ -1,9 +1,7 @@
 import {flickrApi, ResponseImagesType} from "../../dal/axios";
 import {getPhotos} from "./search-operations";
 import {setPaginationOption, setPhotos, setSearchValue} from "./search-actions";
-import {isLoad} from "../procesing-reducer/processing-reducer";
-import {screen} from "@testing-library/react";
-import {removeImageToBookmark} from "../bookmarks-reducer/bookmarks-reducer";
+import {isLoad} from "../procesing/processing-actions";
 
 jest.mock("../../dal/axios")
 

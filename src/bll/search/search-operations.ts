@@ -2,7 +2,7 @@ import {ActionType, setPaginationOption, setPhotos, setSearchValue} from "./sear
 import {flickrApi} from "../../dal/axios";
 import {ThunkAction} from "redux-thunk";
 import {RootStateType} from "../store";
-import {isLoad} from "../procesing-reducer/processing-actions";
+import {isLoad} from "../procesing/processing-actions";
 
 export const getPhotos = (searchString: string | undefined, currentPage: number = 1): ThunkType => {
     return async (dispatch) => {

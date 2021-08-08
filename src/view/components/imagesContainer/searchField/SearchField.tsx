@@ -3,7 +3,7 @@ import {Icon, InputBase, Paper} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import {useDispatch} from "react-redux";
-import {getPhotos} from "../../../../bll/search-reducer/search-operations";
+import {getPhotos} from "../../../../bll/search/search-operations";
 
 const useStyles = makeStyles({
     root: {

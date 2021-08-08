@@ -1,11 +1,7 @@
-import {
-    addBookmarkTags,
-    addImageToBookmark,
-    bookmarksReducer,
-    BookmarksStateType,
-    removeImageToBookmark
-} from "./bookmarks-reducer";
+import {bookmarksReducer,} from "./bookmarks-reducer";
 import {ImageType} from "../../dal/axios";
+import {addBookmarkTags, addImageToBookmark, removeImageToBookmark} from "./bookmarks-actions";
+import {BookmarksStateType} from "./bookmarks-model";
 
 let startState: BookmarksStateType
 

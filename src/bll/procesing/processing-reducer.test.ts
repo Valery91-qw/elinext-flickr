@@ -1,4 +1,6 @@
-import {isLoad, processingReducer, ProcessingStateType} from "./processing-reducer";
+import {ProcessingStateType} from "./processing-model";
+import {isLoad} from "./processing-actions";
+import {processingReducer} from "./processing-reducer";
 
 
 let startState: ProcessingStateType

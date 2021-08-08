@@ -2,15 +2,16 @@ import {Card, CardContent, CardMedia, Grid, Typography} from "@material-ui/core"
 import {makeStyles} from "@material-ui/core/styles";
 import React, {memo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    addBookmarkTags,
-    addImageToBookmark, BookmarkImageType,
-    removeImageToBookmark
-} from "../../../../bll/bookmarks-reducer/bookmarks-reducer";
 import {RootStateType} from "../../../../bll/store";
 import {BookmarkButton} from "./bookmarkButton/BookmarkButton";
 import {TagsField} from "./tagsField/TagsField";
 import {TagsArea} from "./tagsArea/TagsArea";
+import {
+    addBookmarkTags,
+    addImageToBookmark,
+    removeImageToBookmark
+} from "../../../../bll/bookmarks/bookmarks-actions";
+import {BookmarkImageType} from "../../../../bll/bookmarks/bookmarks-model";
 
 
 const useStyles = makeStyles({
@@ -37,7 +38,6 @@ export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
 
     const addToBookmark = () => {
         dispatch(addImageToBookmark(image))
-
         dispatch(addBookmarkTags(image.id, tags))
     }
 

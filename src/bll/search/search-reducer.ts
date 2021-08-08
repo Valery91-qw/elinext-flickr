@@ -2,6 +2,7 @@ import {search_constants} from "./search-constants";
 import {ActionType} from "./search-actions";
 import {initialSearch, SearchStateType} from "./search-model";
 
+
 export const searchReducer = (searchState = initialSearch, action: ActionType): SearchStateType => {
     switch (action.type) {
         case search_constants.SET_SEARCH_VALUE:
@@ -18,4 +19,3 @@ export const searchReducer = (searchState = initialSearch, action: ActionType): 
             return searchState
     }
 }
-
