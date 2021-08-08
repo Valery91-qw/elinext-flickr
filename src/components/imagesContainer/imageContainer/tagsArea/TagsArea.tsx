@@ -29,7 +29,7 @@ export const TagsArea = ({currentId}: TagsAreaPropsType) => {
     })
 
     return (
-        <Grid className={classes.wrapper}>
+        <Grid data-testid="wrapper" className={classes.wrapper}>
             {tags?.map((el, i) => <Chip key={currentId + i} variant='outlined' size='small' label={el}/>)}
         </Grid>
     )

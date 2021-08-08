@@ -1,19 +1,11 @@
 import {ImagesContainer} from "./ImagesContainer";
-import {render, screen} from "@testing-library/react";
-import {createStore} from "redux";
-import {rootReducer} from "../../bll/store";
-import {Provider} from "react-redux";
+import {screen} from "@testing-library/react";
 import {createMemoryHistory} from "history";
 import {Router} from "react-router-dom";
+import {renderWithRedux} from "../../utils/create-store-for-test";
 
-const renderWithRedux = (
-    component: any,
-    { initialState, store = createStore(rootReducer, initialState) }: any = {}
-) => {
-    return {
-        ...render(<Provider store={store}>{component}</Provider>)
-    }
-}
+
+
 const image = {
     id: '1',
     farm: 1,

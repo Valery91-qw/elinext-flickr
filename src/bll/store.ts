@@ -3,7 +3,7 @@ import {searchReducer} from "./search-reducer/search-reducer";
 import thunk from "redux-thunk";
 import {bookmarksReducer} from "./bookmarks-reducer/bookmarks-reducer";
 import {processingReducer} from "./procesing-reducer/processing-reducer";
-import {saveToLocalStorageMiddleware} from "./utils/custom-middleware";
+import {saveToLocalStorageMiddleware} from "../utils/custom-middleware";
 
 export const rootReducer = combineReducers({
     search: searchReducer,

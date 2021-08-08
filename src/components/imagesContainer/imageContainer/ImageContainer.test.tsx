@@ -1,19 +1,7 @@
-import {createStore} from "redux";
-import {rootReducer} from "../../../bll/store";
-import {render, screen} from "@testing-library/react";
-import {Provider} from "react-redux";
+import { screen } from "@testing-library/react";
 import {ImageContainer} from "./ImageContainer";
 import userEvent from "@testing-library/user-event";
-
-
-const renderWithRedux = (
-    component: any,
-    { initialState, store = createStore(rootReducer, initialState) }: any = {}
-) => {
-    return {
-        ...render(<Provider store={store}>{component}</Provider>)
-    }
-}
+import {renderWithRedux} from "../../../utils/create-store-for-test";
 
 const image = {
     id: '1',

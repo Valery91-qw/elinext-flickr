@@ -1,17 +1,7 @@
-import {createStore} from "redux";
-import {rootReducer} from "../../../../bll/store";
-import {render, screen} from "@testing-library/react";
-import {Provider} from "react-redux";
+import { screen} from "@testing-library/react";
 import {BookmarkButton} from "./BookmarkButton";
+import {renderWithRedux} from "../../../../utils/create-store-for-test";
 
-const renderWithRedux = (
-    component: any,
-    { initialState, store = createStore(rootReducer, initialState) }: any = {}
-) => {
-    return {
-        ...render(<Provider store={store}>{component}</Provider>)
-    }
-}
 
 describe('BookmarkButton', () => {
     test('in this case the component should be displayed with a "remove!" button', () => {

@@ -1,18 +1,8 @@
-import {createStore} from "redux";
-import {rootReducer} from "../../../bll/store";
-import {render, screen} from "@testing-library/react";
-import {Provider} from "react-redux";
+import { screen} from "@testing-library/react";
 import React from "react";
 import {PaginationContainer} from "./PaginationContainer";
+import {renderWithRedux} from "../../../utils/create-store-for-test";
 
-const renderWithRedux = (
-    component: any,
-    { initialState, store = createStore(rootReducer, initialState) }: any = {}
-) => {
-    return {
-        ...render(<Provider store={store}>{component}</Provider>)
-    }
-}
 
 describe('Pagination container', () => {
     test('The pagination container must be displayed with at least two buttons', () => {

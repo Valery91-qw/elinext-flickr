@@ -1,19 +1,9 @@
-import {render, screen} from "@testing-library/react";
+import {screen} from "@testing-library/react";
 import {SearchField} from "./SearchField";
-import {createStore} from "redux";
-import {rootReducer} from "../../../bll/store";
-import {Provider} from "react-redux";
 import userEvent from "@testing-library/user-event";
 import React from "react";
+import {renderWithRedux} from "../../../utils/create-store-for-test";
 
-const renderWithRedux = (
-    component: any,
-    { initialState, store = createStore(rootReducer, initialState) }: any = {}
-) => {
-    return {
-        ...render(<Provider store={store}>{component}</Provider>)
-    }
-}
 
 describe('Search field',  () => {
     test('The text that the user enters should be visible on the screen.',  () => {
