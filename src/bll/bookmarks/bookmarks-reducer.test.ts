@@ -64,7 +64,6 @@ test('The image should be added to the state. The state tab should be different.
     expect(startState.bookmarksImages).not.toEqual(endState.bookmarksImages)
     expect(endState.bookmarksImages[2].tags?.length).toBe(2)
     if(endState.bookmarksImages[2].tags) {
-        // eslint-disable-next-line jest/no-conditional-expect
         expect(endState.bookmarksImages[2].tags[0]).toBe('one')
     }
 })
