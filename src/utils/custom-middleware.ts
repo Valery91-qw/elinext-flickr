@@ -4,8 +4,7 @@ import {ActionType} from "../bll/bookmarks/bookmarks-actions";
 
 export const saveToLocalStorageMiddleware = (store: any) => (next: Dispatch) => (action: ActionType) => {
     next(action);
-    if (action.type === bookmarks_constants.ADD_TAGS ||
-        action.type === bookmarks_constants.ADD_IMAGE ||
+    if (action.type === bookmarks_constants.ADD_IMAGE ||
         action.type === bookmarks_constants.REMOVE_IMAGE) {
         saveToLocalStorage({
             bookmarks: store.getState().bookmarks

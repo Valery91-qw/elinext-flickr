@@ -7,7 +7,6 @@ import {BookmarkButton} from "./bookmarkButton/BookmarkButton";
 import {TagsField} from "./tagsField/TagsField";
 import {TagsArea} from "./tagsArea/TagsArea";
 import {
-    addBookmarkTags,
     addImageToBookmark,
     removeImageToBookmark
 } from "../../../../bll/bookmarks/bookmarks-actions";
