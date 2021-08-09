@@ -37,6 +37,7 @@ export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
 
     const addToBookmark = () => {
         dispatch(addImageToBookmark(image, tags))
+        setTags([])
     }
 
     const removeToBookmark = () => {

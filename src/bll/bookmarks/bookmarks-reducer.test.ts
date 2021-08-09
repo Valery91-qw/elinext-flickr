@@ -18,7 +18,7 @@ beforeEach(() => {
                 isfamily: 1,
                 isfriend: 1,
                 ispublic: 1,
-                owner: 'yes'
+                owner: 'yes',
             },
             {
                 title: 'photo2',
@@ -30,7 +30,7 @@ beforeEach(() => {
                 isfamily: 2,
                 isfriend: 2,
                 ispublic: 2,
-                owner: 'yes'
+                owner: 'yes',
             },
         ]
     }
