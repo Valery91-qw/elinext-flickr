@@ -1,4 +1,4 @@
-import {bookmarksReducer,} from "./bookmarks-reducer";
+import bookmarksReducer from "./bookmarks-reducer";
 import {ImageType} from "../../dal/axios";
 import {addBookmarkTags, addImageToBookmark, removeImageToBookmark} from "./bookmarks-actions";
 import {BookmarksStateType} from "./bookmarks-model";
@@ -36,7 +36,7 @@ beforeEach(() => {
     }
 })
 
-test('the image should be added to state', () => {
+test('The image should be added to the state. The state tab should be different. Tags must also be added', () => {
 
     const image: ImageType = {
         title: 'photo3',
@@ -51,15 +51,23 @@ test('the image should be added to state', () => {
         owner: 'yes',
     }
 
-    const action = addImageToBookmark(image)
+    const tags = ['one', 'to']
+
+    const action = addImageToBookmark(image, tags)
 
     const endState = bookmarksReducer(startState, action)
 
     expect(endState.bookmarksImages.length).toBe(3)
     expect(endState.bookmarksImages[0].id).toBe('1')
     expect(endState.bookmarksImages[2].id).toBe('3')
+    expect(startState.bookmarksImages.length).not.toBe(endState.bookmarksImages.length)
+    expect(startState.bookmarksImages).not.toEqual(endState.bookmarksImages)
+    expect(endState.bookmarksImages[2].tags?.length).toBe(2)
+    if(endState.bookmarksImages[2].tags) {
+        expect(endState.bookmarksImages[2].tags[0]).toBe('one')
+    }
 })
-test('curren image should be deleted in state', () => {
+test('Image with id equal to "1" must be removed from the Bookmarks state', () => {
 
     const action = removeImageToBookmark('1')
 
@@ -68,18 +76,4 @@ test('curren image should be deleted in state', () => {
     expect(startState.bookmarksImages.length).toBe(2)
     expect(endState.bookmarksImages.length).toBe(1)
     expect(endState.bookmarksImages[0].id).toBe('2')
-})
-test('bookmark tags should be added to the desired image', () => {
-
-    const action = addBookmarkTags('1' ,['My', 'first', 'tag'])
-
-    const endState = bookmarksReducer(startState, action)
-
-    expect(startState.bookmarksImages[1].tags).toBeUndefined()
-    expect(endState.bookmarksImages[0].tags?.length).toBe(3)
-    if(endState.bookmarksImages[0].tags) {
-        // eslint-disable-next-line jest/no-conditional-expect
-        expect(endState.bookmarksImages[0].tags[0]).toBe('My')
-    }
-
 })

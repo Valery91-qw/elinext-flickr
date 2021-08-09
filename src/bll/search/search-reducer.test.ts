@@ -1,4 +1,4 @@
-import {searchReducer} from "./search-reducer";
+import searchReducer from "./search-reducer";
 import {ImageType} from "../../dal/axios";
 import {setPaginationOption, setPhotos, setSearchValue} from "./search-actions";
 import {SearchStateType} from "./search-model";

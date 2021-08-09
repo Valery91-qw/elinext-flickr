@@ -16,7 +16,7 @@ beforeEach(() => {
     flickrAPIMock.searchPhoto.mockClear()
 });
 
-test('get photos thunk', async () => {
+test('The converter must call 5 action creators in a strictly specified sequence', async () => {
     const result: ResponseImagesType = {
         photos: {
             page: 1,

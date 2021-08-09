@@ -1,9 +1,9 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunk from "redux-thunk";
-import {processingReducer} from "./procesing/processing-reducer";
+import processingReducer from "./procesing/processing-reducer";
 import {saveToLocalStorageMiddleware} from "../utils/custom-middleware";
-import {bookmarksReducer} from "./bookmarks/bookmarks-reducer";
-import {searchReducer} from "./search/search-reducer";
+import bookmarksReducer from "./bookmarks/bookmarks-reducer";
+import searchReducer from "./search/search-reducer";
 
 export const rootReducer = combineReducers({
     search: searchReducer,

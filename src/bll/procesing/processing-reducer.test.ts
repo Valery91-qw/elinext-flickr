@@ -1,6 +1,6 @@
 import {ProcessingStateType} from "./processing-model";
 import {isLoad} from "./processing-actions";
-import {processingReducer} from "./processing-reducer";
+import processingReducer from "./processing-reducer";
 
 
 let startState: ProcessingStateType
@@ -11,7 +11,7 @@ beforeEach(() => {
     }
 })
 
-test('isLoading field must be true', () => {
+test('The isLoading field should change its state to true', () => {
 
     const action = isLoad(true)
 
@@ -20,7 +20,7 @@ test('isLoading field must be true', () => {
     expect(startState.isLoading).toBeUndefined()
     expect(endState.isLoading).toBeTruthy()
 })
-test('isLoading field must be false', () => {
+test('In the processing state, the value of the isLoading field must be changed to false', () => {
 
     const action = isLoad(false)
 
