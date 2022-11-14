@@ -34,6 +34,7 @@ describe('ImagesContainer', () => {
         const history = createMemoryHistory()
         history.push('/search')
         renderWithRedux(
+            // @ts-ignore
             <Router history={history}>
                 <ImagesContainer images={[]} />
             </Router>
@@ -49,6 +50,7 @@ describe('ImagesContainer', () => {
         const history = createMemoryHistory()
         history.push('/search')
         renderWithRedux(
+            // @ts-ignore
             <Router history={history}>
                 <ImagesContainer images={[{
                     id: '1',
@@ -84,6 +86,7 @@ describe('ImagesContainer', () => {
         const history = createMemoryHistory()
         history.push('/search')
         renderWithRedux(
+            // @ts-ignore
             <Router history={history}>
                 <ImagesContainer images={testData} />
             </Router>
@@ -96,6 +99,7 @@ describe('ImagesContainer', () => {
         const history = createMemoryHistory()
         history.push('/bookmarks')
         renderWithRedux(
+            // @ts-ignore
             <Router history={history}>
                 <ImagesContainer images={[]} />
             </Router>
@@ -106,6 +110,7 @@ describe('ImagesContainer', () => {
         const history = createMemoryHistory()
         history.push('/bookmarks')
         renderWithRedux(
+            // @ts-ignore
             <Router history={history}>
                 <ImagesContainer images={testData} />
             </Router>

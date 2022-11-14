@@ -4,7 +4,7 @@ import {RootStateType} from "../bll/store";
 import {Header} from "./components/common/header/Header";
 import {makeStyles} from "@material-ui/core/styles";
 import {LinearProgress} from "@material-ui/core";
-import {Routes} from "./routes/Routes";
+import {RoutesApp} from "./routes/RoutesApp";
 import {Navigation} from "./components/common/navigation/Navigation";
 import {Footer} from "./components/common/footer/Footer";
 
@@ -35,7 +35,7 @@ const App = () => {
         {isLoad && <LinearProgress classes={classes}/> }
         <div style={{display: 'flex'}}>
             <Navigation/>
-            <Routes/>
+            <RoutesApp/>
         </div>
         <Footer/>
     </>)

@@ -23,6 +23,7 @@ export const PaginationContainer = () => {
     const dispatch = useDispatch()
 
     const paginationOption = (event: unknown, page: number) => {
+        // @ts-ignore
         dispatch(getPhotos(searchValue,page))
     }
 

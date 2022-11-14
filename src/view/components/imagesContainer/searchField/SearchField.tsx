@@ -32,6 +32,7 @@ export const SearchField = memo(() => {
     useEffect(() => {
         if(searchValue === '') return
         const timerOutId = setTimeout(() => {
+            // @ts-ignore
             dispatch(getPhotos(searchValue))
         }, 500)
         return () => {

@@ -19,6 +19,7 @@ describe('App component', () => {
     test('The master page should display header, footer, links, input and placeholder', () => {
         const history = createMemoryHistory()
         renderWithRedux(
+            // @ts-ignore
             <Router history={history}>
             <App />
             </Router>

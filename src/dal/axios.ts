@@ -1,7 +1,6 @@
 import axios from "axios";
-import {API_KEY} from "./variable";
 
-const apiKey = process.env.REACT_APP_APIKey || API_KEY
+const apiKey = process.env.REACT_APP_API_KEY
 
 export const flickrApi ={
     searchPhoto(searchValue: string | undefined, currentPage: number) {

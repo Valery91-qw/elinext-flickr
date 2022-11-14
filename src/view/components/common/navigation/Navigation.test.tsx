@@ -7,6 +7,7 @@ describe('Navigation', () => {
     test('snapshot test navigation', () => {
         const history = createMemoryHistory()
         const {asFragment} = render(
+            // @ts-ignore
             <Router history={history}>
                 <Navigation />
             </Router>
@@ -18,6 +19,7 @@ describe('Navigation', () => {
     test('The navigation component should render a menu with two items', () => {
         const history = createMemoryHistory()
         render(
+            // @ts-ignore
             <Router history={history}>
                 <Navigation />
             </Router>
