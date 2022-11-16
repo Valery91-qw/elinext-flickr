@@ -24,10 +24,11 @@ describe('Image container', () => {
         expect(screen.getByText(/first images/)).toBeInTheDocument()
     })
     test('This case should display the passed value', () => {
+        const user = userEvent.setup()
         renderWithRedux(<ImageContainer image={image} />)
         expect(screen.getByRole('textbox')).toBeInTheDocument()
         expect(screen.getByDisplayValue('')).toBeInTheDocument()
-        userEvent.type(screen.getByRole('textbox'), 'hello')
+        user.type(screen.getByRole('textbox'), 'hello')
         expect(screen.getByDisplayValue('hello')).toBeInTheDocument()
     })
 })

@@ -1,6 +1,9 @@
 import {render, screen} from "@testing-library/react";
 
 import {Footer} from "./Footer";
+
+//TODO fix lines under ts-ignore
+
 describe('Footer',  () => {
     test('snapshot test Footer',  () => {
         const {asFragment} = render(<Footer />);

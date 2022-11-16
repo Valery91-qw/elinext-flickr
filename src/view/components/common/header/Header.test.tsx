@@ -1,6 +1,8 @@
 import {render, screen, fireEvent} from "@testing-library/react";
 import {Header} from "./Header";
 
+//TODO fix lines under ts-ignore
+
 describe('Header', () => {
     test('header snapshot',  () => {
         const { asFragment } = render(<Header />)

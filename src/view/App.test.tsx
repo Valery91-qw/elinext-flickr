@@ -6,6 +6,8 @@ import App from "./App";
 import {createMemoryHistory} from "history";
 import {Router} from "react-router-dom";
 
+//TODO fix lines under ts-ignore
+
 const renderWithRedux = (
     component: any,
     { initialState, store = createStore(rootReducer, initialState) }: any = {}

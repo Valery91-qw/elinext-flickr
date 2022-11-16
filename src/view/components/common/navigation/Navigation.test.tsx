@@ -1,28 +1,27 @@
 import {render, screen} from "@testing-library/react";
 import {Navigation} from "./Navigation";
-import {Router} from "react-router-dom";
-import {createMemoryHistory} from 'history'
+import {MemoryRouter} from "react-router-dom";
+
+//TODO fix lines under ts-ignore
 
 describe('Navigation', () => {
     test('snapshot test navigation', () => {
-        const history = createMemoryHistory()
+        const history = '/elinext-flickr#/search'
         const {asFragment} = render(
-            // @ts-ignore
-            <Router history={history}>
+            <MemoryRouter initialEntries={[history]}>
                 <Navigation />
-            </Router>
+            </MemoryRouter>
 
         )
         // @ts-ignore
         expect(asFragment(<Navigation />)).toMatchSnapshot()
     })
     test('The navigation component should render a menu with two items', () => {
-        const history = createMemoryHistory()
+        const history = '/elinext-flickr#/search'
         render(
-            // @ts-ignore
-            <Router history={history}>
+            <MemoryRouter initialEntries={[history]}>
                 <Navigation />
-            </Router>
+            </MemoryRouter>
         )
         expect(screen.getByRole('menu')).toBeInTheDocument()
         expect(screen.getAllByRole('menuitem')[0]).toBeInTheDocument()

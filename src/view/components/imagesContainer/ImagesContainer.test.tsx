@@ -4,7 +4,7 @@ import {createMemoryHistory} from "history";
 import {Router} from "react-router-dom";
 import {renderWithRedux} from "../../../utils/create-store-for-test";
 
-
+//TODO fix lines under ts-ignore
 
 const image = {
     id: '1',
