@@ -1,13 +1,9 @@
-name: Node.js CI
+name: GitHub Demo
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: push
 
 jobs:
-  build:
+  init:
     runs-on: ubuntu-latest
 
     strategy:
