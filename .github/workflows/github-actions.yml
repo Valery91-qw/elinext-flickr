@@ -1,28 +1,24 @@
-name: GitHub Demo
+name: Node.js CI
 
-on: push
+on: [push]
 
 jobs:
-  init:
+  build:
+
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [ 17.x ]
 
-      steps:
-        - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
 
-        - name: install modules
-          run: npm install
-
-        - name: build project
-          run: npm run build
-
-        - name: tests
-          run: npm run test
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build
+      - run: npm run test
