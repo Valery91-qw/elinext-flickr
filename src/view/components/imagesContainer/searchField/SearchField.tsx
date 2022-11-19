@@ -5,6 +5,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import {useDispatch} from "react-redux";
 import {getPhotos} from "../../../../bll/search/search-operations";
 
+//TODO fix lines under ts-ignore
+
 const useStyles = makeStyles({
     root: {
         padding: '2px 4px',
@@ -32,6 +34,7 @@ export const SearchField = memo(() => {
     useEffect(() => {
         if(searchValue === '') return
         const timerOutId = setTimeout(() => {
+            // @ts-ignore
             dispatch(getPhotos(searchValue))
         }, 500)
         return () => {

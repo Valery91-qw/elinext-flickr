@@ -6,6 +6,8 @@ import {Container} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {getPhotos} from "../../../../bll/search/search-operations";
 
+//TODO fix lines under ts-ignore
+
 const useStyles = makeStyles({
     container: {
         display: 'flex',
@@ -23,6 +25,7 @@ export const PaginationContainer = () => {
     const dispatch = useDispatch()
 
     const paginationOption = (event: unknown, page: number) => {
+        // @ts-ignore
         dispatch(getPhotos(searchValue,page))
     }
 

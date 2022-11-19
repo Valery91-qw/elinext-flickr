@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .idea
+.env
 /dal/variable.ts
 # testing
 /coverage
