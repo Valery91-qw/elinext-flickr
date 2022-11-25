@@ -26,7 +26,8 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --watchAll",
+    "test": "react-scripts test --watchAll --transformIgnorePatterns \"node_modules/(?!(axios)/)\"",
+    "test:ci": "react-scripts test --ci --watchAll=false --transformIgnorePatterns \"node_modules/(?!(axios)/)\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
