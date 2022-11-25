@@ -1,6 +1,10 @@
 name: Node.js CI
 
-on: [push]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -9,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 15.x, 17.x ]
+        node-version: [ 17.x ]
 
     steps:
       - uses: actions/checkout@v3
