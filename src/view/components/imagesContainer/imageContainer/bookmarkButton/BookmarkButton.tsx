@@ -1,8 +1,8 @@
-import {Button, CardActions, Typography} from "@material-ui/core";
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "tss-react/mui";
+import {Button, CardActions, Typography} from "@mui/material";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     button: {
         backgroundColor: '#E7FF73',
         color: '#89A600',
@@ -22,7 +22,7 @@ export type BookmarkButtonPropsType = {
 
 export const BookmarkButton = ({ inBookmark, addToBookmark, removeToBookmark} : BookmarkButtonPropsType) => {
 
-    const classes = useStyles()
+    const { classes } = useStyles()
 
     return (<>
         {inBookmark

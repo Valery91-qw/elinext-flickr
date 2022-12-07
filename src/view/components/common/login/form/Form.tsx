@@ -1,10 +1,10 @@
-import {Button} from "@material-ui/core";
 import {FormEvent, useState} from "react";
-import {makeStyles} from "@material-ui/core/styles";
 import {EmailField} from "./EmailField/EmailField";
 import {PasswordField} from "./PasswordField/PasswordField";
+import {makeStyles} from "tss-react/mui";
+import {Button} from "@mui/material";
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles()({
     formWrapper: {
         display: 'flex',
         flexDirection: 'column',
@@ -19,7 +19,7 @@ export const useStyles = makeStyles({
 
 export const Form = () => {
 
-    const classes = useStyles();
+    const { classes } = useStyles();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')

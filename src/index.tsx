@@ -1,24 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './view/App';
-import reportWebVitals from './reportWebVitals';
 import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./bll/store";
 
-ReactDOM.render(
-    <React.StrictMode>
+import {createRoot} from "react-dom/client";
+const container = document.getElementById('root');
+const root = createRoot(container as HTMLElement);
+root.render(
         <Provider store={store}>
             <HashRouter>
                 <App/>
             </HashRouter>
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
+        </Provider>,
 )
-
-// If you want to start measuring performance in your view, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()

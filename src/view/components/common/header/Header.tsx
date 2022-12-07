@@ -1,10 +1,9 @@
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import {AppBar, IconButton, Modal} from "@material-ui/core";
 import React, {forwardRef, useState} from "react";
-import {makeStyles} from '@material-ui/core/styles';
 import {Login} from "../login/Login";
+import {makeStyles} from "tss-react/mui";
+import {AppBar, IconButton, Modal} from "@mui/material";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     bar: {
         backgroundColor: '#FFE500',
         padding: '1em 2em',
@@ -29,7 +28,7 @@ const useStyles = makeStyles({
 
 export const Header = forwardRef((props = {}, ref) => {
 
-    const classes = useStyles()
+    const { classes } = useStyles();
 
     const [open, setOpen] = useState(false)
 
@@ -44,10 +43,10 @@ export const Header = forwardRef((props = {}, ref) => {
         <AppBar component='header' className={classes.bar}>
             <span className={classes.title}>Image Finder</span>
             <IconButton className={classes.button} onClick={handleOpen}>
-                <AccountCircleIcon/>
+                {/*<AccountCircleIcon/>*/}
             </IconButton>
-            <Modal ref={ref} className={classes.modal} aria-labelledby='Google bookmark'
-                open={open}>
+            {/*@ts-ignore*/}
+            <Modal ref={ref} className={classes.modal} aria-labelledby='Google bookmark' open={open}>
                 <Login handleClose={handleClose} />
             </Modal>
         </AppBar>

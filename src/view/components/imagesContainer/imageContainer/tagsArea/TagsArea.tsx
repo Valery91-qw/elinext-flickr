@@ -1,11 +1,12 @@
-import {Chip, Grid} from "@material-ui/core";
 import React from "react";
 import {useSelector} from "react-redux";
 import {RootStateType} from "../../../../../bll/store";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "tss-react/mui";
+import {Chip, Grid} from "@mui/material";
 
 
-const useStyles = makeStyles({
+
+const useStyles = makeStyles()({
     wrapper: {
         margin: '0.5em',
     }
@@ -17,7 +18,7 @@ type TagsAreaPropsType = {
 
 export const TagsArea = ({currentId}: TagsAreaPropsType) => {
 
-    const classes = useStyles()
+    const { classes } = useStyles()
 
     const tags = useSelector<RootStateType, Array<string> | undefined>(state => {
         let im = state.bookmarks.bookmarksImages.find(el => el.id === currentId)

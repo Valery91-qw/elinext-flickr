@@ -1,6 +1,5 @@
-import {InputAdornment, TextField} from "@material-ui/core";
-import EmailIcon from "@material-ui/icons/Email";
 import {ChangeEvent, useEffect, useState} from "react";
+import {InputAdornment, TextField} from "@mui/material";
 
 type LoginFieldPropsType = {
     classes: {
@@ -36,7 +35,7 @@ export const EmailField = ({classes, email, setEmail, setCommonError, commonErro
                    InputProps={{
                        startAdornment: (
                            <InputAdornment position="start">
-                               <EmailIcon />
+                               {/*<EmailIcon />*/}
                            </InputAdornment>
                        ),
                    }}

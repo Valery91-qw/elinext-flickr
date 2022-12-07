@@ -1,6 +1,5 @@
 import {ChangeEvent, useEffect, useState} from "react";
-import {InputAdornment, TextField} from "@material-ui/core";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import {InputAdornment, TextField} from "@mui/material";
 
 type PasswordFieldPropsType = {
     classes: {
@@ -36,7 +35,7 @@ export const PasswordField = ({classes, password, setPassword, setCommonError, c
                    InputProps={{
                        startAdornment: (
                            <InputAdornment position="start">
-                               <VisibilityOffIcon />
+                               {/*<VisibilityOffIcon />*/}
                            </InputAdornment>
                        )
                    }}

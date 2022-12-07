@@ -1,14 +1,11 @@
-import Pagination from "@material-ui/lab/Pagination"
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../../bll/store";
-import {Container} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
 import {getPhotos} from "../../../../bll/search/search-operations";
+import {makeStyles} from "tss-react/mui";
+import {Container, Pagination} from "@mui/material";
 
-//TODO fix lines under ts-ignore
-
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     container: {
         display: 'flex',
         justifyContent: 'flex-end',
@@ -18,7 +15,7 @@ const useStyles = makeStyles({
 })
 export const PaginationContainer = () => {
 
-    const classes = useStyles()
+    const { classes } = useStyles()
 
     const searchValue = useSelector<RootStateType, string | undefined>(state => state.search.searchValue)
     const pagination = useSelector<RootStateType, {pages: number, page: number} | null >(state => state.search.pagination)

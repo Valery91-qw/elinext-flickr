@@ -1,13 +1,10 @@
 import {memo, useEffect, useState} from "react";
-import {Icon, InputBase, Paper} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
 import {useDispatch} from "react-redux";
 import {getPhotos} from "../../../../bll/search/search-operations";
+import {makeStyles} from "tss-react/mui";
+import {Icon, InputBase, Paper} from "@mui/material";
 
-//TODO fix lines under ts-ignore
-
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     root: {
         padding: '2px 4px',
         display: 'flex',
@@ -29,7 +26,7 @@ export const SearchField = memo(() => {
     const dispatch = useDispatch()
 
     const [searchValue, setSearchData] = useState('')
-    const classes = useStyles()
+    const { classes } = useStyles()
 
     useEffect(() => {
         if(searchValue === '') return
@@ -45,7 +42,7 @@ export const SearchField = memo(() => {
     return (
         <Paper className={classes.root}>
             <Icon className={classes.inputIcon}>
-                <SearchIcon />
+                {/*<SearchIcon />*/}
             </Icon>
             <InputBase className={classes.input}
                        value={searchValue}

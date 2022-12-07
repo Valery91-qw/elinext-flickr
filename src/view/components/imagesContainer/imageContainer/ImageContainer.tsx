@@ -1,5 +1,3 @@
-import {Card, CardContent, CardMedia, Grid, Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
 import React, {memo, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../../../bll/store";
@@ -11,9 +9,11 @@ import {
     removeImageToBookmark
 } from "../../../../bll/bookmarks/bookmarks-actions";
 import {BookmarkImageType} from "../../../../bll/bookmarks/bookmarks-model";
+import {makeStyles} from "tss-react/mui";
+import {Card, CardContent, CardMedia, Grid, Typography} from "@mui/material";
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     cardMedia: {
         paddingTop: '56.25%',
     },
@@ -32,7 +32,7 @@ export const ImageContainer = memo(({image}: ImageContainerPropsType) => {
 
     const [tags, setTags] = useState<Array<string>>([])
 
-    const classes = useStyles()
+    const { classes } = useStyles()
     const dispatch = useDispatch()
 
     const addToBookmark = () => {

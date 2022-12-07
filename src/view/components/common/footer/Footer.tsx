@@ -1,8 +1,8 @@
-import {Typography} from "@material-ui/core";
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "tss-react/mui";
+import {Typography} from "@mui/material";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     footer: {
         textAlign: 'left',
         backgroundColor: '#DEFF40',
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 
 export const Footer = () => {
 
-    const classes = useStyles()
+    const { classes } = useStyles()
 
     return (
         <footer>

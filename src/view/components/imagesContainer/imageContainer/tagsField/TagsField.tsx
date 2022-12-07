@@ -1,8 +1,8 @@
-import { TextField } from "@material-ui/core"
 import {ChangeEvent} from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import {makeStyles} from "tss-react/mui";
+import {TextField} from "@mui/material";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     wrapper: {
         margin: '0.5em',
     }
@@ -14,7 +14,7 @@ export type TagsFieldPropsType = {
 
 export const TagsField = ({setTags}: TagsFieldPropsType) => {
 
-    const classes = useStyles()
+    const { classes } = useStyles()
 
     const onTagsHandler = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setTags(event.target.value.trim().split(/[\s,]+/))

@@ -1,10 +1,9 @@
-import {Button, Container, Typography} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core/styles";
-import CancelIcon from '@material-ui/icons/Cancel';
 import {Form} from "./form/Form";
 import {forwardRef} from "react";
+import {makeStyles} from "tss-react/mui";
+import {Button, Container, Typography} from "@mui/material";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles()({
     container: {
         width: '25%',
         backgroundColor: '#fff',
@@ -23,7 +22,7 @@ type LoginPropsType = {
 
 export const Login = forwardRef(({handleClose}: LoginPropsType, ref) => {
 
-    const classes = useStyles()
+    const { classes } = useStyles()
 
     return (
         <Container className={classes.container} >
@@ -32,7 +31,7 @@ export const Login = forwardRef(({handleClose}: LoginPropsType, ref) => {
                 Workpiece
             </Typography>
                 <Button onClick={handleClose}>
-                    <CancelIcon />
+                    {/*<CancelIcon />*/}
                 </Button>
             </Container>
             <Form />
