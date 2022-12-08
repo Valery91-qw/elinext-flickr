@@ -1,14 +1,13 @@
-import {ImageType} from "../../dal/axios";
+import { ImageType } from '../../dal/axios'
 
 export const initialSearch: SearchStateType = {
-    searchValue: undefined,
-    pagination: null,
-    images: []
+  searchValue: undefined,
+  pagination: null,
+  images: [],
 }
 
-
 export type SearchStateType = {
-    searchValue: string | undefined
-    pagination: { page: number, pages: number } | null
-    images: Array<ImageType>
+  searchValue: string | undefined
+  pagination: { page: number; pages: number } | null
+  images: Array<ImageType>
 }

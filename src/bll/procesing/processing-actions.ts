@@ -1,6 +1,6 @@
-import {processing_constants} from "./processing-constants";
+import { processingEnum } from './processing-enum'
 
-export const isLoad = (load: boolean) => ({type: processing_constants.IS_LOAD, load} as const)
+export const isLoad = (load: boolean) => ({ type: processingEnum.IS_LOAD, load } as const)
 
 export type IsLoadType = ReturnType<typeof isLoad>
 

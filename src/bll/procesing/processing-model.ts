@@ -1,8 +1,7 @@
-
 export const initialProcess: ProcessingStateType = {
-    isLoading: undefined
+  isLoading: undefined,
 }
 
 export type ProcessingStateType = {
-    isLoading: boolean | undefined
+  isLoading: boolean | undefined
 }
