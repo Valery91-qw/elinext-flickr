@@ -3,7 +3,7 @@ import processingReducer from './procesing/processing-reducer'
 import { saveToLocalStorageMiddleware } from '../utils/custom-middleware'
 import bookmarksReducer from './bookmarks/bookmarks-reducer'
 import searchReducer from './search/search-reducer'
-import loadFromLocalStorage from '../utils/preloaded-state-local-storage';
+import loadFromLocalStorage from '../utils/preloaded-state-local-storage'
 
 export const rootReducer = combineReducers({
   search: searchReducer,
@@ -16,4 +16,5 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([saveToLocalStorageMiddleware]),
 })
 
-export type RootStateType = ReturnType<typeof rootReducer>
+export type RootStateType = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

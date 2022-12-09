@@ -1,5 +1,5 @@
 import { ActionType } from './bookmarks-actions'
-import { bookmarksEnum } from './bookmarks-enum'
+import BookmarksEnum from './bookmarks-enum'
 import { BookmarksStateType, initialBookmarks } from './bookmarks-model'
 
 export default function bookmarksReducer(
@@ -7,20 +7,20 @@ export default function bookmarksReducer(
   action: ActionType,
 ): BookmarksStateType {
   switch (action.type) {
-    case bookmarksEnum.ADD_IMAGE:
+    case BookmarksEnum.ADD_IMAGE:
       return {
         ...bookmarksState,
         bookmarksImages: [
           ...bookmarksState.bookmarksImages.map((img) =>
             img.tags ? { ...img, tags: [...img.tags] } : { ...img },
           ),
-          { ...action.photo, tags: [...action.tags] },
+          { ...action.payload.photo, tags: [...action.payload.tags] },
         ],
       }
-    case bookmarksEnum.REMOVE_IMAGE:
+    case BookmarksEnum.REMOVE_IMAGE:
       return {
         ...bookmarksState,
-        bookmarksImages: bookmarksState.bookmarksImages.filter((el) => el.id !== action.bookmarkId),
+        bookmarksImages: bookmarksState.bookmarksImages.filter((el) => el.id !== action.payload.bookmarkId),
       }
     default:
       return bookmarksState

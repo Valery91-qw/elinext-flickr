@@ -5,9 +5,11 @@
         "jest": true
     },
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended",
+        "react-app",
+        "react-app/jest",
+        "airbnb",
+        "airbnb-typescript",
+        "plugin:import/typescript",
         "prettier"
     ],
     "overrides": [
@@ -15,7 +17,11 @@
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
-        "sourceType": "module"
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "react",
@@ -25,9 +31,7 @@
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "spaced-comment": "error",
-        "quotes": ["error", "single"],
-        "no-duplicate-imports": "error"
+        "@typescript-eslint/default-param-last": "off"
     },
     "settings": {
         "import/resolver": {

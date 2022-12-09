@@ -1,0 +1,7 @@
+/public
+src/bll/*
+!src/bll/bookmarks
+!src/bll/store.ts
+src/dal/*
+src/utils/*
+src/view/*

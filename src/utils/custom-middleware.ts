@@ -1,12 +1,12 @@
 /* eslint-disable */
 import { Dispatch } from 'redux'
-import { bookmarksEnum } from '../bll/bookmarks/bookmarks-enum'
+import BookmarksEnum from '../bll/bookmarks/bookmarks-enum'
 import { ActionType } from '../bll/bookmarks/bookmarks-actions'
 
 export const saveToLocalStorageMiddleware =
   (store: any) => (next: Dispatch) => (action: ActionType) => {
     next(action)
-    if (action.type === bookmarksEnum.ADD_IMAGE || action.type === bookmarksEnum.REMOVE_IMAGE) {
+    if (action.type === BookmarksEnum.ADD_IMAGE || action.type === BookmarksEnum.REMOVE_IMAGE) {
       saveToLocalStorage({
         bookmarks: store.getState().bookmarks,
       })

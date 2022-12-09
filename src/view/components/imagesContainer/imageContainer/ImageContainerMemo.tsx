@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootStateType } from '../../../../bll/store'
 import { BookmarkButton } from './bookmarkButton/BookmarkButton'
 import { TagsField } from './tagsField/TagsField'
@@ -11,6 +11,7 @@ import {
 import { BookmarkImageType } from '../../../../bll/bookmarks/bookmarks-model'
 import { makeStyles } from 'tss-react/mui'
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import {useAppDispatch} from "../../../../bll/hooks";
 
 const useStyles = makeStyles()({
   cardMedia: {
@@ -30,15 +31,15 @@ export const ImageContainerMemo = memo(function ImageContainer({ image }: ImageC
   const [tags, setTags] = useState<Array<string>>([])
 
   const { classes } = useStyles()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch();
 
   const addToBookmark = () => {
-    dispatch(addImageToBookmark(image, tags))
+    dispatch(addImageToBookmark({photo: image, tags}))
     setTags([])
   }
 
   const removeToBookmark = () => {
-    dispatch(removeImageToBookmark(image.id))
+    dispatch(removeImageToBookmark({bookmarkId: image.id}))
   }
 
   return (
