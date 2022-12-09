@@ -1,36 +1,36 @@
-import {Chip, Grid} from "@material-ui/core";
-import React from "react";
-import {useSelector} from "react-redux";
-import {RootStateType} from "../../../../../bll/store";
-import {makeStyles} from "@material-ui/core/styles";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootStateType } from '../../../../../bll/store'
+import { makeStyles } from 'tss-react/mui'
+import { Chip, Grid } from '@mui/material'
 
-
-const useStyles = makeStyles({
-    wrapper: {
-        margin: '0.5em',
-    }
+const useStyles = makeStyles()({
+  wrapper: {
+    margin: '0.5em',
+  },
 })
 
 type TagsAreaPropsType = {
-    currentId: string
+  currentId: string
 }
 
-export const TagsArea = ({currentId}: TagsAreaPropsType) => {
+export const TagsArea = ({ currentId }: TagsAreaPropsType) => {
+  const { classes } = useStyles()
 
-    const classes = useStyles()
+  const tags = useSelector<RootStateType, Array<string> | undefined>((state) => {
+    const im = state.bookmarks.bookmarksImages.find((el) => el.id === currentId)
+    if (im) {
+      return im.tags
+    } else {
+      return
+    }
+  })
 
-    const tags = useSelector<RootStateType, Array<string> | undefined>(state => {
-        let im = state.bookmarks.bookmarksImages.find(el => el.id === currentId)
-        if (im) {
-            return im.tags
-        } else {
-            return
-        }
-    })
-
-    return (
-        <Grid data-testid="wrapper" className={classes.wrapper}>
-            {tags?.map((el, i) => <Chip key={currentId + i} variant='outlined' size='small' label={el}/>)}
-        </Grid>
-    )
+  return (
+    <Grid data-testid='wrapper' className={classes.wrapper}>
+      {tags?.map((el, i) => (
+        <Chip key={currentId + i} variant='outlined' size='small' label={el} />
+      ))}
+    </Grid>
+  )
 }

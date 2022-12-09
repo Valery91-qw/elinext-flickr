@@ -1,12 +1,15 @@
-import {ActionType} from "./processing-actions";
-import {processing_constants} from "./processing-constants";
-import {initialProcess, ProcessingStateType} from "./processing-model";
+import { ActionType } from './processing-actions'
+import { processingEnum } from './processing-enum'
+import { initialProcess, ProcessingStateType } from './processing-model'
 
-export default function processingReducer (state = initialProcess, action: ActionType): ProcessingStateType {
-    switch (action.type) {
-        case processing_constants.IS_LOAD:
-            return {...state, isLoading: action.load}
-        default: return state
-    }
+export default function processingReducer(
+  state = initialProcess,
+  action: ActionType,
+): ProcessingStateType {
+  switch (action.type) {
+    case processingEnum.IS_LOAD:
+      return { ...state, isLoading: action.load }
+    default:
+      return state
+  }
 }
-
