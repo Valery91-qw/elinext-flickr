@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { ImagesContainer } from '../components/imagesContainer/ImagesContainer'
-import {useAppSelector} from "../../bll/hooks";
+import { useAppSelector } from '../../bll/hooks'
 
 export const RoutesApp = () => {
-  const images = useAppSelector((state) => state.search.images);
+  const images = useAppSelector((state) => state.search.images)
   const bookmarks = useAppSelector((state) => state.bookmarks.bookmarksImages)
   return (
     <Routes>

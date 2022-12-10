@@ -1,28 +1,17 @@
-import { ActionType } from './bookmarks-actions'
-import BookmarksEnum from './bookmarks-enum'
-import { BookmarksStateType, initialBookmarks } from './bookmarks-model'
+import { createReducer } from '@reduxjs/toolkit'
+import { addImageToBookmark, removeImageToBookmark } from './bookmarks-actions'
+import { initialBookmarks } from './bookmarks-model'
 
-export default function bookmarksReducer(
-  bookmarksState = initialBookmarks,
-  action: ActionType,
-): BookmarksStateType {
-  switch (action.type) {
-    case BookmarksEnum.ADD_IMAGE:
-      return {
-        ...bookmarksState,
-        bookmarksImages: [
-          ...bookmarksState.bookmarksImages.map((img) =>
-            img.tags ? { ...img, tags: [...img.tags] } : { ...img },
-          ),
-          { ...action.payload.photo, tags: [...action.payload.tags] },
-        ],
-      }
-    case BookmarksEnum.REMOVE_IMAGE:
-      return {
-        ...bookmarksState,
-        bookmarksImages: bookmarksState.bookmarksImages.filter((el) => el.id !== action.payload.bookmarkId),
-      }
-    default:
-      return bookmarksState
-  }
-}
+const bookmarksReducer = createReducer(initialBookmarks, (builder) => {
+  builder
+    .addCase(addImageToBookmark, (state, action) => {
+      state.bookmarksImages.push({ ...action.payload.photo, tags: action.payload.tags })
+    })
+    .addCase(removeImageToBookmark, (state, action) => {
+      const { bookmarkId } = action.payload
+      const imgIndex = state.bookmarksImages.findIndex((el) => el.id === bookmarkId)
+      state.bookmarksImages.splice(imgIndex, 1)
+    })
+})
+
+export default bookmarksReducer

@@ -1,10 +1,14 @@
-/* eslint-disable */
-import { Dispatch } from 'redux'
+import { Dispatch, Middleware } from 'redux'
 import BookmarksEnum from '../bll/bookmarks/bookmarks-enum'
 import { ActionType } from '../bll/bookmarks/bookmarks-actions'
 
-export const saveToLocalStorageMiddleware =
-  (store: any) => (next: Dispatch) => (action: ActionType) => {
+function saveToLocalStorage(state: Object) {
+  const serialisedState = JSON.stringify(state)
+  localStorage.setItem('bookmarkState', serialisedState)
+}
+
+const saveToLocalStorageMiddleware: Middleware =
+  (store) => (next: Dispatch) => (action: ActionType) => {
     next(action)
     if (action.type === BookmarksEnum.ADD_IMAGE || action.type === BookmarksEnum.REMOVE_IMAGE) {
       saveToLocalStorage({
@@ -13,11 +17,4 @@ export const saveToLocalStorageMiddleware =
     }
   }
 
-function saveToLocalStorage(state: any) {
-  try {
-    const serialisedState = JSON.stringify(state)
-    localStorage.setItem('bookmarkState', serialisedState)
-  } catch (e) {
-    console.warn(e)
-  }
-}
+export default saveToLocalStorageMiddleware

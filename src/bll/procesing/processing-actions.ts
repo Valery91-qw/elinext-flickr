@@ -1,6 +1,7 @@
-import { processingEnum } from './processing-enum'
+import { createAction } from '@reduxjs/toolkit'
+import ProcessingEnum from './processing-enum'
 
-export const isLoad = (load: boolean) => ({ type: processingEnum.IS_LOAD, load } as const)
+export const isLoad = createAction<boolean, ProcessingEnum.IS_LOAD>(ProcessingEnum.IS_LOAD)
 
 export type IsLoadType = ReturnType<typeof isLoad>
 

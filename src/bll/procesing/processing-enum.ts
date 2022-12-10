@@ -1,3 +1,5 @@
-export enum processingEnum {
+enum ProcessingEnum {
   IS_LOAD = 'processing/IS_LOAD',
 }
+
+export default ProcessingEnum

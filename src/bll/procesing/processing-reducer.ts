@@ -1,15 +1,12 @@
-import { ActionType } from './processing-actions'
-import { processingEnum } from './processing-enum'
-import { initialProcess, ProcessingStateType } from './processing-model'
+/* eslint no-param-reassign: 0 */
+import { createReducer } from '@reduxjs/toolkit'
+import { isLoad } from './processing-actions'
+import { initialProcess } from './processing-model'
 
-export default function processingReducer(
-  state = initialProcess,
-  action: ActionType,
-): ProcessingStateType {
-  switch (action.type) {
-    case processingEnum.IS_LOAD:
-      return { ...state, isLoading: action.load }
-    default:
-      return state
-  }
-}
+const processingReducer = createReducer(initialProcess, (builder) => {
+  builder.addCase(isLoad, (state, action) => {
+    state.isLoading = action.payload
+  })
+})
+
+export default processingReducer

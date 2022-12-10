@@ -52,7 +52,7 @@ test('The image should be added to the state. The state tab should be different.
 
   const tags = ['one', 'to']
 
-  const action = addImageToBookmark({photo: image, tags})
+  const action = addImageToBookmark({ photo: image, tags })
 
   const endState = bookmarksReducer(startState, action)
 
@@ -64,7 +64,7 @@ test('The image should be added to the state. The state tab should be different.
   expect(endState.bookmarksImages[2].tags?.length).toBe(2)
 })
 test('Image with id equal to "1" must be removed from the Bookmarks state', () => {
-  const action = removeImageToBookmark({bookmarkId: '1'})
+  const action = removeImageToBookmark({ bookmarkId: '1' })
 
   const endState = bookmarksReducer(startState, action)
 
