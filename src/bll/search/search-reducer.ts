@@ -1,19 +1,19 @@
-import { searchEnum } from './search-enum'
-import { ActionType } from './search-actions'
-import { initialSearch, SearchStateType } from './search-model'
+/* eslint no-param-reassign: 0 */
+import { createReducer } from '@reduxjs/toolkit'
+import { setPaginationOption, setPhotos, setSearchValue } from './search-actions'
+import { initialSearch } from './search-model'
 
-export default function searchReducer(
-  searchState = initialSearch,
-  action: ActionType,
-): SearchStateType {
-  switch (action.type) {
-    case searchEnum.SET_SEARCH_VALUE:
-      return { ...searchState, searchValue: action.searchValue }
-    case searchEnum.SET_PHOTOS:
-      return { ...searchState, images: [...action.photos] }
-    case searchEnum.SET_PAGINATION_OPTION:
-      return { ...searchState, pagination: { ...searchState.pagination, ...action.pagination } }
-    default:
-      return searchState
-  }
-}
+const searchReducer = createReducer(initialSearch, (builder) => {
+  builder
+    .addCase(setSearchValue, (state, action) => {
+      state.searchValue = action.payload
+    })
+    .addCase(setPhotos, (state, action) => {
+      state.images = action.payload
+    })
+    .addCase(setPaginationOption, (state, action) => {
+      state.pagination = action.payload
+    })
+})
+
+export default searchReducer

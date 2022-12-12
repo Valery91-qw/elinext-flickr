@@ -39,7 +39,7 @@ export const ImageContainerMemo = memo(function ImageContainer({ image }: ImageC
   }
 
   const removeToBookmark = () => {
-    dispatch(removeImageToBookmark({ bookmarkId: image.id }))
+    dispatch(removeImageToBookmark(image.id))
   }
 
   return (

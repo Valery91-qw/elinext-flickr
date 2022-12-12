@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getPhotos } from '../../../../bll/search/search-operations'
+import getPhotos from '../../../../bll/search/search-operations'
 import { makeStyles } from 'tss-react/mui'
 import { Icon, InputBase, Paper } from '@mui/material'
 

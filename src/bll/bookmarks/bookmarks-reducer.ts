@@ -8,7 +8,7 @@ const bookmarksReducer = createReducer(initialBookmarks, (builder) => {
       state.bookmarksImages.push({ ...action.payload.photo, tags: action.payload.tags })
     })
     .addCase(removeImageToBookmark, (state, action) => {
-      const { bookmarkId } = action.payload
+      const bookmarkId = action.payload
       const imgIndex = state.bookmarksImages.findIndex((el) => el.id === bookmarkId)
       state.bookmarksImages.splice(imgIndex, 1)
     })

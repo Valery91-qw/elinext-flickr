@@ -7,10 +7,9 @@ export const addImageToBookmark = createAction<
   BookmarksEnum.ADD_IMAGE
 >(BookmarksEnum.ADD_IMAGE)
 
-export const removeImageToBookmark = createAction<
-  { bookmarkId: string },
-  BookmarksEnum.REMOVE_IMAGE
->(BookmarksEnum.REMOVE_IMAGE)
+export const removeImageToBookmark = createAction<string, BookmarksEnum.REMOVE_IMAGE>(
+  BookmarksEnum.REMOVE_IMAGE,
+)
 
 type AddImageToBookmarkType = ReturnType<typeof addImageToBookmark>
 type RemoveImageToBookmarkType = ReturnType<typeof removeImageToBookmark>

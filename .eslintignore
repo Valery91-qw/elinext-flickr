@@ -1,7 +1,3 @@
 /public
-src/bll/*
-!src/bll/procesing
-!src/bll/store.ts
-!src/bll/hooks.ts
 src/dal/*
 src/view/*

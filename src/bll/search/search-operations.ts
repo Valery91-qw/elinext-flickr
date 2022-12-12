@@ -1,11 +1,12 @@
+import { ThunkAction } from '@reduxjs/toolkit'
 import { ActionType, setPaginationOption, setPhotos, setSearchValue } from './search-actions'
 import { flickrApi } from '../../dal/axios'
-import { ThunkAction } from 'redux-thunk'
 import { RootStateType } from '../store'
 import { isLoad } from '../procesing/processing-actions'
 
-export const getPhotos = (searchString: string | undefined, currentPage = 1): ThunkType => {
-  return async (dispatch) => {
+const getPhotos =
+  (searchString: string | undefined, currentPage = 1): ThunkType =>
+  async (dispatch) => {
     dispatch(setSearchValue(searchString))
     dispatch(isLoad(true))
     try {
@@ -17,6 +18,7 @@ export const getPhotos = (searchString: string | undefined, currentPage = 1): Th
       console.warn(e)
     }
   }
-}
+
+export default getPhotos
 
 type ThunkType = ThunkAction<void, RootStateType, unknown, ActionType>

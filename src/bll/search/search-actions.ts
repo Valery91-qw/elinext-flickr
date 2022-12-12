@@ -1,13 +1,20 @@
-import { searchEnum } from './search-enum'
+import { createAction } from '@reduxjs/toolkit'
 import { ImageType } from '../../dal/axios'
 import { IsLoadType } from '../procesing/processing-actions'
+import SearchEnum from './search-enum'
 
-export const setSearchValue = (searchValue: string | undefined) =>
-  ({ type: searchEnum.SET_SEARCH_VALUE, searchValue } as const)
-export const setPhotos = (photos: Array<ImageType>) =>
-  ({ type: searchEnum.SET_PHOTOS, photos } as const)
-export const setPaginationOption = (pagination: { page: number; pages: number }) =>
-  ({ type: searchEnum.SET_PAGINATION_OPTION, pagination } as const)
+export const setSearchValue = createAction<string | undefined, SearchEnum.SET_SEARCH_VALUE>(
+  SearchEnum.SET_SEARCH_VALUE,
+)
+
+export const setPhotos = createAction<Array<ImageType>, SearchEnum.SET_PHOTOS>(
+  SearchEnum.SET_PHOTOS,
+)
+
+export const setPaginationOption = createAction<
+  { page: number; pages: number },
+  SearchEnum.SET_PAGINATION_OPTION
+>(SearchEnum.SET_PAGINATION_OPTION)
 
 type SetSearchValueType = ReturnType<typeof setSearchValue>
 type SetPhotosType = ReturnType<typeof setPhotos>
