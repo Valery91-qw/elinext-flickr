@@ -51,7 +51,7 @@ test('The converter must call 5 action creators in a strictly specified sequence
     isLoad(false),
   ]
 
-  const thunk = getPhotos({searchString: 'one', currentPage: 1})
+  const thunk = getPhotos({ searchString: 'one', currentPage: 1 })
   await thunk(dispatchMock, getStateMock, {})
 
   expect(dispatchMock).toBeCalledTimes(5)

@@ -1,17 +1,17 @@
 import React, { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { RootStateType } from '../../../../bll/store'
+import { RootStateType } from '../../../../redux/store'
 import { BookmarkButton } from './bookmarkButton/BookmarkButton'
 import { TagsField } from './tagsField/TagsField'
 import { TagsArea } from './tagsArea/TagsArea'
 import {
   addImageToBookmark,
   removeImageToBookmark,
-} from '../../../../bll/bookmarks/bookmarks-actions'
-import { BookmarkImageType } from '../../../../bll/bookmarks/bookmarks-model'
+} from '../../../../redux/bookmarks/bookmarks-actions'
+import { BookmarkImageType } from '../../../../redux/bookmarks/bookmarks-model'
 import { makeStyles } from 'tss-react/mui'
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
-import { useAppDispatch } from '../../../../bll/hooks'
+import { useAppDispatch } from '../../../../redux/hooks'
 
 const useStyles = makeStyles()({
   cardMedia: {

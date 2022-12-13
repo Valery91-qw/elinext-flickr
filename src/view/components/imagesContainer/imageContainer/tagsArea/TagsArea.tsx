@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { RootStateType } from '../../../../../bll/store'
+import { RootStateType } from '../../../../../redux/store'
 import { makeStyles } from 'tss-react/mui'
 import { Chip, Grid } from '@mui/material'
 

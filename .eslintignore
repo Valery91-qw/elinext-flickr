@@ -1,3 +1,7 @@
 /public
 src/dal/*
-src/view/*
+src/view/components/imagesContainer/imageContainer
+src/view/components/imagesContainer/pagination
+src/view/components/imagesContainer/searchField
+!src/view/components/imagesContainer/ImagesContainer.tsx
+src/view/components/common

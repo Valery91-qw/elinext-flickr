@@ -1,6 +1,6 @@
 import { Dispatch, Middleware } from 'redux'
-import BookmarksEnum from '../bll/bookmarks/bookmarks-enum'
-import { ActionType } from '../bll/bookmarks/bookmarks-actions'
+import BookmarksEnum from '../redux/bookmarks/bookmarks-enum'
+import { ActionType } from '../redux/bookmarks/bookmarks-actions'
 
 function saveToLocalStorage(state: Object) {
   const serialisedState = JSON.stringify(state)

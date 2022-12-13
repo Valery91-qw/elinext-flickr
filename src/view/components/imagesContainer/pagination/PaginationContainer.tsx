@@ -1,10 +1,10 @@
 import React from 'react'
-import { RootStateType } from '../../../../bll/store'
-import getPhotos from '../../../../bll/search/search-operations'
+import { RootStateType } from '../../../../redux/store'
+import getPhotos from '../../../../redux/search/search-operations'
 import { makeStyles } from 'tss-react/mui'
 import { Container, Pagination } from '@mui/material'
-import { useSelector} from "react-redux";
-import {useAppDispatch} from "../../../../bll/hooks";
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '../../../../redux/hooks'
 
 const useStyles = makeStyles()({
   container: {
@@ -25,7 +25,7 @@ export const PaginationContainer = () => {
   const dispatch = useAppDispatch()
 
   const paginationOption = (event: unknown, page: number) => {
-    dispatch( getPhotos( {searchString: searchValue, currentPage: page } ) )
+    dispatch(getPhotos({ searchString: searchValue, currentPage: page }))
   }
 
   const totalPages = pagination ? pagination.pages : 0
