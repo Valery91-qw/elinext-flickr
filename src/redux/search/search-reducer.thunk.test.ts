@@ -52,13 +52,13 @@ test('The converter must call 5 action creators in a strictly specified sequence
   ]
 
   const thunk = getPhotos({ searchString: 'one', currentPage: 1 })
-  await thunk(dispatchMock, getStateMock, {})
+  await thunk(dispatchMock, getStateMock, undefined)
 
-  expect(dispatchMock).toBeCalledTimes(5)
-  expect(dispatchMock.mock.calls[0][0]).toEqual(expectedActions[0])
-  expect(dispatchMock.mock.calls[1][0]).toEqual(expectedActions[1])
-  expect(dispatchMock.mock.calls[1][0]).not.toEqual(expectedActions[0])
-  expect(dispatchMock.mock.calls[2][0]).toEqual(expectedActions[2])
-  expect(dispatchMock.mock.calls[3][0]).toEqual(expectedActions[3])
-  expect(dispatchMock.mock.calls[4][0]).toEqual(expectedActions[4])
+  expect(dispatchMock).toBeCalledTimes(7)
+  expect(dispatchMock.mock.calls[1][0]).toEqual(expectedActions[0])
+  expect(dispatchMock.mock.calls[2][0]).toEqual(expectedActions[1])
+  expect(dispatchMock.mock.calls[2][0]).not.toEqual(expectedActions[0])
+  expect(dispatchMock.mock.calls[3][0]).toEqual(expectedActions[2])
+  expect(dispatchMock.mock.calls[4][0]).toEqual(expectedActions[3])
+  expect(dispatchMock.mock.calls[5][0]).toEqual(expectedActions[4])
 })
