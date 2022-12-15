@@ -15,6 +15,7 @@ const getPhotos = createAsyncThunk(
       thunkAPI.dispatch(setPaginationOption({ page: data.photos.page, pages: data.photos.pages }))
       thunkAPI.dispatch(isLoad(false))
     } catch (e) {
+        // eslint-disable-next-line no-console
       console.warn(e)
     }
   },
