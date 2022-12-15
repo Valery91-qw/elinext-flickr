@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { InputAdornment, TextField } from '@mui/material'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
 type PasswordFieldPropsType = {
   classes: {
@@ -11,13 +12,13 @@ type PasswordFieldPropsType = {
   commonError: { email: boolean; password: boolean }
 }
 
-export const PasswordField = ({
+export default function PasswordField({
   classes,
   password,
   setPassword,
   setCommonError,
   commonError,
-}: PasswordFieldPropsType) => {
+}: PasswordFieldPropsType) {
   const [isError, setIsError] = useState(false)
 
   const handlePassword = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -39,7 +40,9 @@ export const PasswordField = ({
       onChange={handlePassword}
       InputProps={{
         startAdornment: (
-          <InputAdornment position='start'>{/* <VisibilityOffIcon />*/}</InputAdornment>
+          <InputAdornment position='start'>
+            <VisibilityOffIcon />
+          </InputAdornment>
         ),
       }}
       error={isError}

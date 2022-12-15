@@ -1,8 +1,8 @@
 import { memo, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { getPhotos } from '../../../../bll/search/search-operations'
+import getPhotos from '../../../../redux/search/search-operations'
 import { makeStyles } from 'tss-react/mui'
 import { Icon, InputBase, Paper } from '@mui/material'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
 
 const useStyles = makeStyles()({
   root: {
@@ -22,7 +22,8 @@ const useStyles = makeStyles()({
 })
 
 export const SearchFieldMemo = memo(function SearchField() {
-  const dispatch = useDispatch()
+  const page = useAppSelector((state) => state.search.pagination?.page)
+  const dispatch = useAppDispatch()
 
   const [searchValue, setSearchData] = useState('')
   const { classes } = useStyles()
@@ -30,8 +31,7 @@ export const SearchFieldMemo = memo(function SearchField() {
   useEffect(() => {
     if (searchValue === '') return
     const timerOutId = setTimeout(() => {
-      // @ts-ignore
-      dispatch(getPhotos(searchValue))
+      dispatch(getPhotos({ searchString: searchValue, currentPage: page || 1 }))
     }, 500)
     return () => {
       clearTimeout(timerOutId)

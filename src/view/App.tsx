@@ -1,12 +1,10 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootStateType } from '../bll/store'
-import { Header } from './components/common/header/Header'
-import { RoutesApp } from './routes/RoutesApp'
-import { Navigation } from './components/common/navigation/Navigation'
-import { Footer } from './components/common/footer/Footer'
 import { makeStyles } from 'tss-react/mui'
 import { LinearProgress } from '@mui/material'
+import Header from './components/common/header/Header'
+import Navigation from './components/common/navigation/Navigation'
+import Footer from './components/common/footer/Footer'
+import { useAppSelector } from '../redux/hooks'
+import RoutesApp from './router/RoutesApp'
 
 const useStyles = makeStyles()({
   root: {
@@ -23,8 +21,8 @@ const useStyles = makeStyles()({
   },
 })
 
-const App = () => {
-  const isLoad = useSelector<RootStateType, boolean | undefined>((state) => state.process.isLoading)
+export default function App() {
+  const isLoad = useAppSelector((state) => state.process.isLoading)
 
   const { classes } = useStyles()
 
@@ -40,5 +38,3 @@ const App = () => {
     </>
   )
 }
-
-export default App

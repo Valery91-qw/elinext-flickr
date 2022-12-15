@@ -3,7 +3,7 @@ import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import App from './view/App'
 import './index.css'
-import { store } from './bll/store'
+import { store } from './redux/store'
 
 const container = document.getElementById('root')
 const root = createRoot(container as HTMLElement)

@@ -1,10 +1,5 @@
 export default function loadFromLocalStorage() {
-    try {
-        const serialisedState = localStorage.getItem('bookmarkState')
-        if (serialisedState === null) return
-        return JSON.parse(serialisedState)
-    } catch (e) {
-        console.warn(e)
-        return
-    }
+  const serialisedState = localStorage.getItem('bookmarkState')
+  if (serialisedState) return JSON.parse(serialisedState)
+  return {}
 }

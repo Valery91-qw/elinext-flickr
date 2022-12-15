@@ -1,9 +1,9 @@
-import { FormEvent, useState } from 'react'
-import { EmailField } from './EmailField/EmailField'
-import { PasswordField } from './PasswordField/PasswordField'
 import { makeStyles } from 'tss-react/mui'
 import { Button } from '@mui/material'
-
+import { FormEvent, useState } from 'react'
+import EmailField from './EmailField/EmailField'
+import PasswordField from './PasswordField/PasswordField'
+// TODO must change this form processing
 export const useStyles = makeStyles()({
   formWrapper: {
     display: 'flex',
@@ -17,7 +17,7 @@ export const useStyles = makeStyles()({
   },
 })
 
-export const Form = () => {
+export default function Form() {
   const { classes } = useStyles()
 
   const [email, setEmail] = useState('')

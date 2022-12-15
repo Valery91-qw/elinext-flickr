@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react'
 import { InputAdornment, TextField } from '@mui/material'
+import EmailIcon from '@mui/icons-material/Email'
 
 type LoginFieldPropsType = {
   classes: {
@@ -11,13 +12,13 @@ type LoginFieldPropsType = {
   commonError: { email: boolean; password: boolean }
 }
 
-export const EmailField = ({
+export default function EmailField({
   classes,
   email,
   setEmail,
   setCommonError,
   commonError,
-}: LoginFieldPropsType) => {
+}: LoginFieldPropsType) {
   const [isError, setIsError] = useState(false)
 
   const handleEmail = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -37,7 +38,11 @@ export const EmailField = ({
       required
       onChange={handleEmail}
       InputProps={{
-        startAdornment: <InputAdornment position='start'>{/* <EmailIcon />*/}</InputAdornment>,
+        startAdornment: (
+          <InputAdornment position='start'>
+            <EmailIcon />
+          </InputAdornment>
+        ),
       }}
       value={email}
       className={classes.field}

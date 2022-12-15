@@ -1,5 +1,5 @@
 import { flickrApi, ResponseImagesType } from '../../dal/axios'
-import { getPhotos } from './search-operations'
+import getPhotos from './search-operations'
 import { setPaginationOption, setPhotos, setSearchValue } from './search-actions'
 import { isLoad } from '../procesing/processing-actions'
 
@@ -51,14 +51,14 @@ test('The converter must call 5 action creators in a strictly specified sequence
     isLoad(false),
   ]
 
-  const thunk = getPhotos('one')
-  await thunk(dispatchMock, getStateMock, {})
+  const thunk = getPhotos({ searchString: 'one', currentPage: 1 })
+  await thunk(dispatchMock, getStateMock, undefined)
 
-  expect(dispatchMock).toBeCalledTimes(5)
-  expect(dispatchMock.mock.calls[0][0]).toEqual(expectedActions[0])
-  expect(dispatchMock.mock.calls[1][0]).toEqual(expectedActions[1])
-  expect(dispatchMock.mock.calls[1][0]).not.toEqual(expectedActions[0])
-  expect(dispatchMock.mock.calls[2][0]).toEqual(expectedActions[2])
-  expect(dispatchMock.mock.calls[3][0]).toEqual(expectedActions[3])
-  expect(dispatchMock.mock.calls[4][0]).toEqual(expectedActions[4])
+  expect(dispatchMock).toBeCalledTimes(7)
+  expect(dispatchMock.mock.calls[1][0]).toEqual(expectedActions[0])
+  expect(dispatchMock.mock.calls[2][0]).toEqual(expectedActions[1])
+  expect(dispatchMock.mock.calls[2][0]).not.toEqual(expectedActions[0])
+  expect(dispatchMock.mock.calls[3][0]).toEqual(expectedActions[2])
+  expect(dispatchMock.mock.calls[4][0]).toEqual(expectedActions[3])
+  expect(dispatchMock.mock.calls[5][0]).toEqual(expectedActions[4])
 })
