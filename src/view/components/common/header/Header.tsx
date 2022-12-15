@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import { Login } from '../login/Login'
-import { makeStyles } from 'tss-react/mui'
 import { AppBar, IconButton, Modal } from '@mui/material'
+import React, { useState } from 'react'
+import { makeStyles } from 'tss-react/mui'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import LoginWithRef from '../login/Login'
 
 const useStyles = makeStyles()({
   bar: {
@@ -25,26 +26,23 @@ const useStyles = makeStyles()({
   },
 })
 
-export const Header = () => {
+export default function Header() {
   const { classes } = useStyles()
 
-  const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
-  const handleClose = () => {
-    setOpen(false)
+  const handleClick = () => {
+    setIsOpen((prevState) => !prevState)
   }
 
   return (
     <AppBar component='header' className={classes.bar}>
       <span className={classes.title}>Image Finder</span>
-      <IconButton className={classes.button} onClick={handleOpen}>
-        {/* <AccountCircleIcon/>*/}
+      <IconButton className={classes.button} onClick={handleClick}>
+        <AccountCircleIcon />
       </IconButton>
-      <Modal className={classes.modal} aria-labelledby='Google bookmark' open={open}>
-        <Login handleClose={handleClose} />
+      <Modal className={classes.modal} aria-labelledby='Google bookmark' open={isOpen}>
+        <LoginWithRef handleClose={handleClick} />
       </Modal>
     </AppBar>
   )

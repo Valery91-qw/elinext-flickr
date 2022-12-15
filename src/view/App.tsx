@@ -1,8 +1,8 @@
 import { makeStyles } from 'tss-react/mui'
 import { LinearProgress } from '@mui/material'
-import { Header } from './components/common/header/Header'
-import { Navigation } from './components/common/navigation/Navigation'
-import { Footer } from './components/common/footer/Footer'
+import Header from './components/common/header/Header'
+import Navigation from './components/common/navigation/Navigation'
+import Footer from './components/common/footer/Footer'
 import { useAppSelector } from '../redux/hooks'
 import RoutesApp from './router/RoutesApp'
 
