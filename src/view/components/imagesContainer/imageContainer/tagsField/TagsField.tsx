@@ -8,11 +8,11 @@ const useStyles = makeStyles()({
   },
 })
 
-export type TagsFieldPropsType = {
+type TagsFieldPropsType = {
   setTags: (tags: Array<string>) => void
 }
 
-export const TagsField = ({ setTags }: TagsFieldPropsType) => {
+export default function TagsField({ setTags }: TagsFieldPropsType) {
   const { classes } = useStyles()
 
   const onTagsHandler = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {

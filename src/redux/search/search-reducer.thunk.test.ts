@@ -1,7 +1,7 @@
 import { flickrApi, ResponseImagesType } from '../../dal/axios'
 import getPhotos from './search-operations'
 import { setPaginationOption, setPhotos, setSearchValue } from './search-actions'
-import { isLoad } from '../procesing/processing-actions'
+import isLoad from '../procesing/processing-actions'
 
 jest.mock('../../dal/axios')
 

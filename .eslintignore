@@ -1,5 +1,2 @@
 /public
 src/dal/*
-src/view/components/imagesContainer/imageContainer
-src/view/components/imagesContainer/pagination
-src/view/components/imagesContainer/searchField

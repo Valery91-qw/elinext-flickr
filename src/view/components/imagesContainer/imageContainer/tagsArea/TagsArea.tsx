@@ -1,8 +1,6 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootStateType } from '../../../../../redux/store'
 import { makeStyles } from 'tss-react/mui'
 import { Chip, Grid } from '@mui/material'
+import { useAppSelector } from '../../../../../redux/hooks'
 
 const useStyles = makeStyles()({
   wrapper: {
@@ -14,22 +12,21 @@ type TagsAreaPropsType = {
   currentId: string
 }
 
-export const TagsArea = ({ currentId }: TagsAreaPropsType) => {
+export default function TagsArea({ currentId }: TagsAreaPropsType) {
   const { classes } = useStyles()
 
-  const tags = useSelector<RootStateType, Array<string> | undefined>((state) => {
+  const tags = useAppSelector((state) => {
     const im = state.bookmarks.bookmarksImages.find((el) => el.id === currentId)
     if (im) {
       return im.tags
-    } else {
-      return
     }
+    return undefined
   })
 
   return (
     <Grid data-testid='wrapper' className={classes.wrapper}>
-      {tags?.map((el, i) => (
-        <Chip key={currentId + i} variant='outlined' size='small' label={el} />
+      {tags?.map((el) => (
+        <Chip key={currentId + el} variant='outlined' size='small' label={el} />
       ))}
     </Grid>
   )

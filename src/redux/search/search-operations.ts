@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { setPaginationOption, setPhotos, setSearchValue } from './search-actions'
 import { flickrApi } from '../../dal/axios'
-import { isLoad } from '../procesing/processing-actions'
+import isLoad from '../procesing/processing-actions'
 
 const getPhotos = createAsyncThunk(
   'photos/get',
@@ -15,7 +15,7 @@ const getPhotos = createAsyncThunk(
       thunkAPI.dispatch(setPaginationOption({ page: data.photos.page, pages: data.photos.pages }))
       thunkAPI.dispatch(isLoad(false))
     } catch (e) {
-        // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       console.warn(e)
     }
   },

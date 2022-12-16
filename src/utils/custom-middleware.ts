@@ -1,20 +1,18 @@
-import { Dispatch, Middleware } from 'redux'
+import { Middleware } from 'redux'
 import BookmarksEnum from '../redux/bookmarks/bookmarks-enum'
-import { ActionType } from '../redux/bookmarks/bookmarks-actions'
 
 function saveToLocalStorage(state: Object) {
   const serialisedState = JSON.stringify(state)
   localStorage.setItem('bookmarkState', serialisedState)
 }
 
-const saveToLocalStorageMiddleware: Middleware =
-  (store) => (next: Dispatch) => (action: ActionType) => {
-    next(action)
-    if (action.type === BookmarksEnum.ADD_IMAGE || action.type === BookmarksEnum.REMOVE_IMAGE) {
-      saveToLocalStorage({
-        bookmarks: store.getState().bookmarks,
-      })
-    }
+const saveToLocalStorageMiddleware: Middleware = (store) => (next) => (action) => {
+  next(action)
+  if (action.type === BookmarksEnum.ADD_IMAGE || action.type === BookmarksEnum.REMOVE_IMAGE) {
+    saveToLocalStorage({
+      bookmarks: store.getState().bookmarks,
+    })
   }
+}
 
 export default saveToLocalStorageMiddleware

@@ -1,7 +1,8 @@
 import { memo, useEffect, useState } from 'react'
-import getPhotos from '../../../../redux/search/search-operations'
 import { makeStyles } from 'tss-react/mui'
 import { Icon, InputBase, Paper } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
+import getPhotos from '../../../../redux/search/search-operations'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
 
 const useStyles = makeStyles()({
@@ -21,7 +22,7 @@ const useStyles = makeStyles()({
   },
 })
 
-export const SearchFieldMemo = memo(function SearchField() {
+function SearchField() {
   const page = useAppSelector((state) => state.search.pagination?.page)
   const dispatch = useAppDispatch()
 
@@ -29,18 +30,21 @@ export const SearchFieldMemo = memo(function SearchField() {
   const { classes } = useStyles()
 
   useEffect(() => {
-    if (searchValue === '') return
+    if (searchValue === '') return undefined
     const timerOutId = setTimeout(() => {
       dispatch(getPhotos({ searchString: searchValue, currentPage: page || 1 }))
     }, 500)
     return () => {
       clearTimeout(timerOutId)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, searchValue])
 
   return (
     <Paper className={classes.root}>
-      <Icon className={classes.inputIcon}>{/* <SearchIcon />*/}</Icon>
+      <Icon className={classes.inputIcon}>
+        <SearchIcon />
+      </Icon>
       <InputBase
         className={classes.input}
         value={searchValue}
@@ -49,4 +53,8 @@ export const SearchFieldMemo = memo(function SearchField() {
       />
     </Paper>
   )
-})
+}
+
+const SearchFieldMemo = memo(SearchField)
+
+export default SearchFieldMemo

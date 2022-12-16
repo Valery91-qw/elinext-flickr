@@ -1,17 +1,15 @@
-import React, { memo, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { RootStateType } from '../../../../redux/store'
-import { BookmarkButton } from './bookmarkButton/BookmarkButton'
-import { TagsField } from './tagsField/TagsField'
-import { TagsArea } from './tagsArea/TagsArea'
+import { memo, useState } from 'react'
+import { makeStyles } from 'tss-react/mui'
+import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import BookmarkButton from './bookmarkButton/BookmarkButton'
+import TagsField from './tagsField/TagsField'
+import TagsArea from './tagsArea/TagsArea'
 import {
   addImageToBookmark,
   removeImageToBookmark,
 } from '../../../../redux/bookmarks/bookmarks-actions'
 import { BookmarkImageType } from '../../../../redux/bookmarks/bookmarks-model'
-import { makeStyles } from 'tss-react/mui'
-import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
-import { useAppDispatch } from '../../../../redux/hooks'
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
 
 const useStyles = makeStyles()({
   cardMedia: {
@@ -23,10 +21,10 @@ export type ImageContainerPropsType = {
   image: BookmarkImageType
 }
 
-export const ImageContainerMemo = memo(function ImageContainer({ image }: ImageContainerPropsType) {
-  const inBookmark = useSelector<RootStateType, boolean>((state) => {
-    return !!state.bookmarks.bookmarksImages.find((el) => el.id === image.id)
-  })
+function ImageContainer({ image }: ImageContainerPropsType) {
+  const inBookmark = useAppSelector(
+    (state) => !!state.bookmarks.bookmarksImages.find((el) => el.id === image.id),
+  )
 
   const [tags, setTags] = useState<Array<string>>([])
 
@@ -62,4 +60,7 @@ export const ImageContainerMemo = memo(function ImageContainer({ image }: ImageC
       </Card>
     </Grid>
   )
-})
+}
+const ImageContainerMemo = memo(ImageContainer)
+
+export default ImageContainerMemo
