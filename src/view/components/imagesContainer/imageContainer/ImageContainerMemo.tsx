@@ -22,8 +22,8 @@ export type ImageContainerPropsType = {
 }
 
 function ImageContainer({ image }: ImageContainerPropsType) {
-  const inBookmark = useAppSelector(
-    (state) => !!state.bookmarks.bookmarksImages.find((el) => el.id === image.id),
+  const inBookmark = useAppSelector((state) =>
+    state.bookmarks.bookmarksImages.some((el) => el.id === image.id),
   )
 
   const [tags, setTags] = useState<Array<string>>([])

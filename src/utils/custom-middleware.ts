@@ -1,9 +1,10 @@
 import { Middleware } from 'redux'
 import BookmarksEnum from '../redux/bookmarks/bookmarks-enum'
+import bookmarks from './utils.constants'
 
 function saveToLocalStorage(state: Object) {
   const serialisedState = JSON.stringify(state)
-  localStorage.setItem('bookmarkState', serialisedState)
+  localStorage.setItem(bookmarks, serialisedState)
 }
 
 const saveToLocalStorageMiddleware: Middleware = (store) => (next) => (action) => {
