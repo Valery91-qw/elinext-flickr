@@ -10,6 +10,7 @@ import {
 } from '../../../../redux/bookmarks/bookmarks-actions'
 import { BookmarkImageType } from '../../../../redux/bookmarks/bookmarks-model'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
+import setImageUrl from "../../../../utils/setImageUrl";
 
 const useStyles = makeStyles()({
   cardMedia: {
@@ -46,7 +47,7 @@ function ImageContainer({ image }: ImageContainerPropsType) {
         <CardMedia
           className={classes.cardMedia}
           title={image.title}
-          image={`https://live.staticflickr.com/${image.server}/${image.id}_${image.secret}_m.jpg`}
+          image={setImageUrl(image.server, image.id, image.secret)}
         />
         <CardContent>
           <Typography>{image.title}</Typography>

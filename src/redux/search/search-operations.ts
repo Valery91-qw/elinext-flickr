@@ -5,7 +5,7 @@ import isLoad from '../procesing/processing-actions'
 
 const getPhotos = createAsyncThunk(
   'photos/get',
-  async (searchParam: { searchString: string | undefined; currentPage: number }, thunkAPI) => {
+  async (searchParam: { searchString: string | undefined; currentPage?: number }, thunkAPI) => {
     const { searchString, currentPage = 1 } = searchParam
     thunkAPI.dispatch(setSearchValue(searchString))
     thunkAPI.dispatch(isLoad(true))

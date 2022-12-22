@@ -17,19 +17,16 @@ export default function PaginationContainer() {
   const pagination = useAppSelector((state) => state.search.pagination)
   const dispatch = useAppDispatch()
 
-  const paginationOption = (event: unknown, page: number) => {
+  const setPaginationOption = (event: unknown, page: number) => {
     dispatch(getPhotos({ searchString: searchValue, currentPage: page }))
   }
-
-  const totalPages = pagination ? pagination.pages : 0
-  const currentPages = pagination ? pagination.page : 1
 
   return (
     <Container className={classes.container}>
       <Pagination
-        count={totalPages}
-        page={currentPages}
-        onChange={(event, page) => paginationOption(event, page)}
+        count={pagination?.pages}
+        page={pagination?.page}
+        onChange={(event, page) => setPaginationOption(event, page)}
       />
     </Container>
   )

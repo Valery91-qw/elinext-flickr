@@ -31,7 +31,7 @@ const useStylesPreloader = makeStyles()({
   root: {
     width: '100%',
     position: 'absolute',
-    top: '63px',
+    top: '60px',
     backgroundColor: '#D2F700',
   },
   bar2Indeterminate: {
@@ -46,7 +46,7 @@ export default function Header() {
   const { classes } = useStyles()
   const { classes: preloaderClasses } = useStylesPreloader()
 
-  const isLoad = useAppSelector((state) => state.process.isLoading)
+  const isLoading = useAppSelector((state) => state.process.isLoading)
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
@@ -64,7 +64,7 @@ export default function Header() {
           <LoginWithRef handleClose={handleClick} />
         </Modal>
       </AppBar>
-      {isLoad && <LinearProgress classes={preloaderClasses} />}
+      {isLoading && <LinearProgress classes={preloaderClasses} />}
     </>
   )
 }

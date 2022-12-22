@@ -3,7 +3,7 @@ import { makeStyles } from 'tss-react/mui'
 import { Icon, InputBase, Paper } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import getPhotos from '../../../../redux/search/search-operations'
-import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
+import {useAppDispatch, useAppSelector} from '../../../../redux/hooks'
 
 const useStyles = makeStyles()({
   root: {
@@ -23,21 +23,20 @@ const useStyles = makeStyles()({
 })
 
 function SearchField() {
-  const page = useAppSelector((state) => state.search.pagination?.page)
+  const searchQuery = useAppSelector((state) => state.search.searchValue)
   const dispatch = useAppDispatch()
 
-  const [searchValue, setSearchData] = useState('')
+  const [searchValue, setSearchData] = useState<string | undefined>()
   const { classes } = useStyles()
 
   useEffect(() => {
-    if (searchValue === '') return undefined
+    if (!searchValue) return undefined
     const timerOutId = setTimeout(() => {
-      dispatch(getPhotos({ searchString: searchValue, currentPage: page || 1 }))
+      dispatch(getPhotos({ searchString: searchValue } ))
     }, 500)
     return () => {
       clearTimeout(timerOutId)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, searchValue])
 
   return (
@@ -47,7 +46,7 @@ function SearchField() {
       </Icon>
       <InputBase
         className={classes.input}
-        value={searchValue}
+        value={searchQuery}
         placeholder='Search'
         onChange={(e) => setSearchData(e.currentTarget.value)}
       />
