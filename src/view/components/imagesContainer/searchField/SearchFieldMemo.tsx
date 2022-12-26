@@ -26,17 +26,18 @@ function SearchField() {
   const searchQuery = useAppSelector((state) => state.search.searchValue)
   const dispatch = useAppDispatch()
 
-  const [searchValue, setSearchData] = useState<string | undefined>()
+  const [searchValue, setSearchData] = useState<string | undefined>(searchQuery)
   const { classes } = useStyles()
 
   useEffect(() => {
-    if (!searchValue) return undefined
+    if (searchValue === undefined || searchValue === searchQuery) return undefined
     const timerOutId = setTimeout(() => {
       dispatch(getPhotos({ searchString: searchValue } ))
     }, 500)
     return () => {
       clearTimeout(timerOutId)
     }
+  /* eslint-disable react-hooks/exhaustive-deps */
   }, [dispatch, searchValue])
 
   return (
@@ -46,7 +47,7 @@ function SearchField() {
       </Icon>
       <InputBase
         className={classes.input}
-        value={searchQuery}
+        value={searchValue || ''}
         placeholder='Search'
         onChange={(e) => setSearchData(e.currentTarget.value)}
       />
