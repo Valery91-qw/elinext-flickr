@@ -4,4 +4,4 @@ enum BookmarksEnum {
   ADD_TAGS = 'bookmarks/ADD_TAGS',
 }
 
-export default BookmarksEnum
+export default BookmarksEnum;

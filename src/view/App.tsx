@@ -1,9 +1,9 @@
-import Header from './components/common/header/Header'
-import Navigation from './components/common/navigation/Navigation'
-import Footer from './components/common/footer/Footer'
-import RoutesApp from './router/RoutesApp'
+import { Outlet } from 'react-router-dom';
+import Header from './components/common/header/Header';
+import Navigation from './components/common/navigation/Navigation';
+import Footer from './components/common/footer/Footer';
 
-const containerStyles = { display: 'flex' }
+const containerStyles = { display: 'flex' };
 
 export default function App() {
   return (
@@ -11,9 +11,9 @@ export default function App() {
       <Header />
       <div style={containerStyles}>
         <Navigation />
-        <RoutesApp />
+        <Outlet />
       </div>
       <Footer />
     </>
-  )
+  );
 }

@@ -4,4 +4,4 @@ enum RouterEnum {
   BOOKMARKS = '/bookmarks',
 }
 
-export default RouterEnum
+export default RouterEnum;

@@ -1,9 +1,9 @@
-import { memo, useEffect, useState } from 'react'
-import { makeStyles } from 'tss-react/mui'
-import { Icon, InputBase, Paper } from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
-import getPhotos from '../../../../redux/search/search-operations'
-import {useAppDispatch, useAppSelector} from '../../../../redux/hooks'
+import { memo, useEffect, useState } from 'react';
+import { makeStyles } from 'tss-react/mui';
+import { Icon, InputBase, Paper } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import getPhotos from '../../../../redux/search/search-operations';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
 
 const useStyles = makeStyles()({
   root: {
@@ -20,25 +20,25 @@ const useStyles = makeStyles()({
     margin: '0.3em',
     color: '#FFE500',
   },
-})
+});
 
 function SearchField() {
-  const searchQuery = useAppSelector((state) => state.search.searchValue)
-  const dispatch = useAppDispatch()
+  const searchQuery = useAppSelector((state) => state.search.searchValue);
+  const dispatch = useAppDispatch();
 
-  const [searchValue, setSearchData] = useState<string | undefined>(searchQuery)
-  const { classes } = useStyles()
+  const [searchValue, setSearchData] = useState<string | undefined>(searchQuery);
+  const { classes } = useStyles();
 
   useEffect(() => {
-    if (searchValue === undefined || searchValue === searchQuery) return undefined
+    if (searchValue === undefined || searchValue === searchQuery) return undefined;
     const timerOutId = setTimeout(() => {
-      dispatch(getPhotos({ searchString: searchValue } ))
-    }, 500)
+      dispatch(getPhotos({ searchString: searchValue }));
+    }, 500);
     return () => {
-      clearTimeout(timerOutId)
-    }
+      clearTimeout(timerOutId);
+    };
   /* eslint-disable react-hooks/exhaustive-deps */
-  }, [dispatch, searchValue])
+  }, [dispatch, searchValue]);
 
   return (
     <Paper className={classes.root}>
@@ -48,13 +48,13 @@ function SearchField() {
       <InputBase
         className={classes.input}
         value={searchValue || ''}
-        placeholder='Search'
+        placeholder="Search"
         onChange={(e) => setSearchData(e.currentTarget.value)}
       />
     </Paper>
-  )
+  );
 }
 
-const SearchFieldMemo = memo(SearchField)
+const SearchFieldMemo = memo(SearchField);
 
-export default SearchFieldMemo
+export default SearchFieldMemo;

@@ -1,45 +1,49 @@
-import { memo, useState } from 'react'
-import { makeStyles } from 'tss-react/mui'
-import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
-import BookmarkButton from './bookmarkButton/BookmarkButton'
-import TagsField from './tagsField/TagsField'
-import TagsArea from './tagsArea/TagsArea'
+import { memo, useState } from 'react';
+import { makeStyles } from 'tss-react/mui';
+import {
+  Card, CardContent, CardMedia, Grid, Typography,
+} from '@mui/material';
+import BookmarkButton from './bookmarkButton/BookmarkButton';
+import TagsField from './tagsField/TagsField';
+import TagsArea from './tagsArea/TagsArea';
 import {
   addImageToBookmark,
   removeImageToBookmark,
-} from '../../../../redux/bookmarks/bookmarks-actions'
-import { BookmarkImageType } from '../../../../redux/bookmarks/bookmarks-model'
-import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
-import setImageUrl from "../../../../utils/setImageUrl";
+} from '../../../../redux/bookmarks/bookmarks-actions';
+import { BookmarkImageType } from '../../../../redux/bookmarks/bookmarks-model';
+import { useAppDispatch, useAppSelector } from '../../../../redux/hooks';
+import setImageUrl from '../../../../utils/set-image-url';
 
 const useStyles = makeStyles()({
   cardMedia: {
     paddingTop: '56.25%',
   },
-})
+});
 
 export type ImageContainerPropsType = {
   image: BookmarkImageType
-}
+};
 
 function ImageContainer({ image }: ImageContainerPropsType) {
-  const inBookmark = useAppSelector((state) =>
-    state.bookmarks.bookmarksImages.some((el) => el.id === image.id),
-  )
+  const inBookmark = useAppSelector(
+    (state) => state.bookmarks.bookmarksImages.some(
+      (el) => el.id === image.id,
+    ),
+  );
 
-  const [tags, setTags] = useState<Array<string>>([])
+  const [tags, setTags] = useState<Array<string>>([]);
 
-  const { classes } = useStyles()
-  const dispatch = useAppDispatch()
+  const { classes } = useStyles();
+  const dispatch = useAppDispatch();
 
   const addToBookmark = () => {
-    dispatch(addImageToBookmark({ photo: image, tags }))
-    setTags([])
-  }
+    dispatch(addImageToBookmark({ photo: image, tags }));
+    setTags([]);
+  };
 
   const removeToBookmark = () => {
-    dispatch(removeImageToBookmark(image.id))
-  }
+    dispatch(removeImageToBookmark(image.id));
+  };
 
   return (
     <Grid item xs={12} sm={6} md={3}>
@@ -60,8 +64,8 @@ function ImageContainer({ image }: ImageContainerPropsType) {
         {inBookmark ? <TagsArea currentId={image.id} /> : <TagsField setTags={setTags} />}
       </Card>
     </Grid>
-  )
+  );
 }
-const ImageContainerMemo = memo(ImageContainer)
+const ImageContainerMemo = memo(ImageContainer);
 
-export default ImageContainerMemo
+export default ImageContainerMemo;

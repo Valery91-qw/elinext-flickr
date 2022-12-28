@@ -1,5 +1,5 @@
-import { makeStyles } from 'tss-react/mui'
-import { Button, CardActions, Typography } from '@mui/material'
+import { makeStyles } from 'tss-react/mui';
+import { Button, CardActions, Typography } from '@mui/material';
 
 const useStyles = makeStyles()({
   button: {
@@ -11,36 +11,36 @@ const useStyles = makeStyles()({
       color: '#E7FF73',
     },
   },
-})
+});
 
 type BookmarkButtonPropsType = {
   inBookmark: boolean
   addToBookmark: () => void
   removeToBookmark: () => void
-}
+};
 
 export default function BookmarkButton({
   inBookmark,
   addToBookmark,
   removeToBookmark,
 }: BookmarkButtonPropsType) {
-  const { classes } = useStyles()
+  const { classes } = useStyles();
 
   if (inBookmark) {
     return (
       <CardActions>
-        <Button onClick={removeToBookmark} className={classes.button} size='small'>
+        <Button onClick={removeToBookmark} className={classes.button} size="small">
           <Typography>remove!</Typography>
         </Button>
       </CardActions>
-    )
+    );
   }
 
   return (
     <CardActions>
-      <Button onClick={addToBookmark} className={classes.button} size='small'>
+      <Button onClick={addToBookmark} className={classes.button} size="small">
         <Typography>bookmark it!</Typography>
       </Button>
     </CardActions>
-  )
+  );
 }

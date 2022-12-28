@@ -4,4 +4,4 @@ enum SearchEnum {
   SET_PAGINATION_OPTION = 'search/SET_PAGINATION_OPTION',
 }
 
-export default SearchEnum
+export default SearchEnum;

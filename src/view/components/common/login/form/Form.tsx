@@ -1,8 +1,8 @@
-import { makeStyles } from 'tss-react/mui'
-import { Button } from '@mui/material'
-import { FormEvent, useState } from 'react'
-import EmailField from './EmailField/EmailField'
-import PasswordField from './PasswordField/PasswordField'
+import { makeStyles } from 'tss-react/mui';
+import { Button } from '@mui/material';
+import { FormEvent, useState } from 'react';
+import EmailField from './EmailField/EmailField';
+import PasswordField from './PasswordField/PasswordField';
 // TODO must change this form processing
 export const useStyles = makeStyles()({
   formWrapper: {
@@ -15,18 +15,18 @@ export const useStyles = makeStyles()({
   button: {
     margin: '1em 0',
   },
-})
+});
 
 export default function Form() {
-  const { classes } = useStyles()
+  const { classes } = useStyles();
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [commonError, setCommonError] = useState({ email: true, password: true })
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [commonError, setCommonError] = useState({ email: true, password: true });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
   return (
     <form noValidate className={classes.formWrapper} onSubmit={handleSubmit}>
@@ -47,10 +47,10 @@ export default function Form() {
       <Button
         disabled={commonError.email || commonError.password}
         className={classes.button}
-        type='submit'
+        type="submit"
       >
         Sign In
       </Button>
     </form>
-  )
+  );
 }

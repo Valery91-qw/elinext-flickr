@@ -1,8 +1,8 @@
-import CancelIcon from '@mui/icons-material/Cancel'
-import { ForwardedRef, forwardRef } from 'react'
-import { Button, Container, Typography } from '@mui/material'
-import { makeStyles } from 'tss-react/mui'
-import Form from './form/Form'
+import CancelIcon from '@mui/icons-material/Cancel';
+import { ForwardedRef, forwardRef } from 'react';
+import { Button, Container, Typography } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
+import Form from './form/Form';
 
 const useStyles = makeStyles()({
   container: {
@@ -15,15 +15,15 @@ const useStyles = makeStyles()({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-})
+});
 
 type LoginPropsType = {
   handleClose: () => void
-}
+};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function Login({ handleClose }: LoginPropsType, ref: ForwardedRef<{}>) {
-  const { classes } = useStyles()
+  const { classes } = useStyles();
 
   return (
     <Container className={classes.container}>
@@ -35,8 +35,8 @@ function Login({ handleClose }: LoginPropsType, ref: ForwardedRef<{}>) {
       </Container>
       <Form />
     </Container>
-  )
+  );
 }
 
-const LoginWithRef = forwardRef(Login)
-export default LoginWithRef
+const LoginWithRef = forwardRef(Login);
+export default LoginWithRef;

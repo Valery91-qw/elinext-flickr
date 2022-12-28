@@ -1,9 +1,11 @@
-import { AppBar, IconButton, LinearProgress, Modal } from '@mui/material'
-import { useState } from 'react'
-import { makeStyles } from 'tss-react/mui'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import LoginWithRef from '../login/Login'
-import { useAppSelector } from '../../../../redux/hooks'
+import {
+  AppBar, IconButton, LinearProgress, Modal,
+} from '@mui/material';
+import { useState } from 'react';
+import { makeStyles } from 'tss-react/mui';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LoginWithRef from '../login/Login';
+import { useAppSelector } from '../../../../redux/hooks';
 
 const useStyles = makeStyles()({
   bar: {
@@ -25,7 +27,7 @@ const useStyles = makeStyles()({
     alignItems: 'center',
     justifyContent: 'center',
   },
-})
+});
 
 const useStylesPreloader = makeStyles()({
   root: {
@@ -40,31 +42,31 @@ const useStylesPreloader = makeStyles()({
   bar1Indeterminate: {
     backgroundColor: '#FFBC00',
   },
-})
+});
 
 export default function Header() {
-  const { classes } = useStyles()
-  const { classes: preloaderClasses } = useStylesPreloader()
+  const { classes } = useStyles();
+  const { classes: preloaderClasses } = useStylesPreloader();
 
-  const isLoading = useAppSelector((state) => state.process.isLoading)
-  const [isOpen, setIsOpen] = useState(false)
+  const isLoading = useAppSelector((state) => state.process.isLoading);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
-    setIsOpen((prevState) => !prevState)
-  }
+    setIsOpen((prevState) => !prevState);
+  };
 
   return (
     <>
-      <AppBar component='header' className={classes.bar}>
+      <AppBar component="header" className={classes.bar}>
         <span className={classes.title}>Image Finder</span>
         <IconButton className={classes.button} onClick={handleClick}>
           <AccountCircleIcon />
         </IconButton>
-        <Modal className={classes.modal} aria-labelledby='Google bookmark' open={isOpen}>
+        <Modal className={classes.modal} aria-labelledby="Google bookmark" open={isOpen}>
           <LoginWithRef handleClose={handleClick} />
         </Modal>
       </AppBar>
       {isLoading && <LinearProgress classes={preloaderClasses} />}
     </>
-  )
+  );
 }

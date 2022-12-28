@@ -1,9 +1,11 @@
-import { Link as RouterLink } from 'react-router-dom'
-import { makeStyles } from 'tss-react/mui'
-import { Divider, Link, MenuItem, MenuList } from '@mui/material'
-import CloudIcon from '@mui/icons-material/Cloud'
-import BookmarksIcon from '@mui/icons-material/Bookmarks'
-import routerEnum from '../../../router/routerEnum'
+import { Link as RouterLink } from 'react-router-dom';
+import { makeStyles } from 'tss-react/mui';
+import {
+  Divider, Link, MenuItem, MenuList,
+} from '@mui/material';
+import CloudIcon from '@mui/icons-material/Cloud';
+import BookmarksIcon from '@mui/icons-material/Bookmarks';
+import routerEnum from '../../../../router/router-enum';
 
 const useStyles = makeStyles()({
   nav: {
@@ -21,10 +23,10 @@ const useStyles = makeStyles()({
       backgroundColor: '#E7FF73',
     },
   },
-})
+});
 
 export default function Navigation() {
-  const { classes } = useStyles()
+  const { classes } = useStyles();
 
   return (
     <MenuList className={classes.nav}>
@@ -40,5 +42,5 @@ export default function Navigation() {
         </MenuItem>
       </Link>
     </MenuList>
-  )
+  );
 }

@@ -9,8 +9,7 @@
         "react-app/jest",
         "airbnb",
         "airbnb-typescript",
-        "plugin:import/typescript",
-        "prettier"
+        "plugin:import/typescript"
     ],
     "overrides": [
     ],
@@ -26,8 +25,7 @@
     "plugins": [
         "react",
         "react-hooks",
-        "@typescript-eslint",
-        "prettier"
+        "@typescript-eslint"
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",

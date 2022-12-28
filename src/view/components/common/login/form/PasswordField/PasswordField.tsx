@@ -1,6 +1,6 @@
-import { ChangeEvent, useEffect, useState } from 'react'
-import { InputAdornment, TextField } from '@mui/material'
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
+import { ChangeEvent, useEffect, useState } from 'react';
+import { InputAdornment, TextField } from '@mui/material';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 type PasswordFieldPropsType = {
   classes: {
@@ -10,7 +10,7 @@ type PasswordFieldPropsType = {
   setPassword: (password: string) => void
   setCommonError: ({ email, password }: { email: boolean; password: boolean }) => void
   commonError: { email: boolean; password: boolean }
-}
+};
 
 export default function PasswordField({
   classes,
@@ -19,20 +19,20 @@ export default function PasswordField({
   setCommonError,
   commonError,
 }: PasswordFieldPropsType) {
-  const [isError, setIsError] = useState(false)
+  const [isError, setIsError] = useState(false);
 
   const handlePassword = (event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     if (event.target.value.length < 8) {
-      setIsError(true)
+      setIsError(true);
     } else {
-      setIsError(false)
+      setIsError(false);
     }
-    setPassword(event.target.value)
-  }
+    setPassword(event.target.value);
+  };
 
   useEffect(() => {
-    setCommonError({ email: commonError.email, password: isError })
-  }, [commonError.email, isError, setCommonError])
+    setCommonError({ email: commonError.email, password: isError });
+  }, [commonError.email, isError, setCommonError]);
 
   return (
     <TextField
@@ -40,7 +40,7 @@ export default function PasswordField({
       onChange={handlePassword}
       InputProps={{
         startAdornment: (
-          <InputAdornment position='start'>
+          <InputAdornment position="start">
             <VisibilityOffIcon />
           </InputAdornment>
         ),
@@ -48,11 +48,11 @@ export default function PasswordField({
       error={isError}
       className={classes.field}
       value={password}
-      size='small'
-      id='password'
-      name='password'
-      type='password'
-      label='Password'
+      size="small"
+      id="password"
+      name="password"
+      type="password"
+      label="Password"
     />
-  )
+  );
 }
